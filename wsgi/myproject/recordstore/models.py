@@ -20,6 +20,7 @@ class Album(models.Model):
     name = models.CharField(max_length=255)
     num_songs = models.IntegerField(default=0)
     release_date = models.DateField('Release Date')
+    rating = models.IntegerField(default=0)
 
     ALLOWED_FORMATS = (
         ('cd', 'CD'),
