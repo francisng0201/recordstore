@@ -1,4 +1,5 @@
 from django.db import models
+from django.db import models
 
 # Create your models here.
 
@@ -6,11 +7,11 @@ class Genre(models.Model):
     name = models.CharField(max_length=255, primary_key=True)
 
 class Artist(models.Model):
-    country = models.CharField(max_length=255)
+    country = models.CharField(max_length=255, default='')
     date_start = models.DateTimeField('Start Date')
-    date_end = models.DateTimeField('End Date')
+    date_end = models.DateTimeField('End Date', null=True)
     name = models.CharField(max_length=255)
-    musicbrainz_id = models.IntegerField(default=0)
+    musicbrainz_id = models.IntegerField(default=0, null=True)
     
 class Album(models.Model):
     artist = models.ForeignKey(Artist)
