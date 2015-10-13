@@ -1,10 +1,14 @@
 from django.db import models
 from django.db import models
+from django.utils import timezone
 
 # Create your models here.
 
 class Genre(models.Model):
     name = models.CharField(max_length=255, primary_key=True)
+
+    def __unicode__(self):
+        return self.name
 
 class Artist(models.Model):
     country = models.CharField(max_length=255, default='')
@@ -12,6 +16,12 @@ class Artist(models.Model):
     date_end = models.DateTimeField('End Date', null=True)
     name = models.CharField(max_length=255)
     musicbrainz_id = models.IntegerField(default=0, null=True)
+
+    def __unicode__(self):
+        return self.name
+
+    def is_active(self):
+        return self.date_end == models.NullField
     
 class Album(models.Model):
     artist = models.ForeignKey(Artist)
@@ -22,13 +32,8 @@ class Album(models.Model):
     release_date = models.DateField('Release Date')
     rating = models.IntegerField(default=0)
 
-    ALLOWED_FORMATS = (
-        ('cd', 'CD'),
-        ('vinyl_12', 'Vinyl 12 inch'),
-        ('vinyl_7', 'Vinyl 7 inch'),
-        ('tape', 'Tape'),
-    )
-    release_format = models.CharField(max_length=255, choices=ALLOWED_FORMATS)
+    def __unicode__(self):
+        return self.name 
 
 class Pressing(models.Model):
     album = models.ForeignKey(Album)
@@ -37,3 +42,10 @@ class Pressing(models.Model):
     label_address = models.CharField(max_length=255)
     artwork = models.ImageField()
 
+    ALLOWED_FORMATS = (
+        ('cd', 'CD'),
+        ('vinyl_12', 'Vinyl 12 inch'),
+        ('vinyl_7', 'Vinyl 7 inch'),
+        ('tape', 'Tape'),
+    )
+    release_format = models.CharField(max_length=255, choices=ALLOWED_FORMATS, default='')
