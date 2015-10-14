@@ -30,7 +30,16 @@ class Album(models.Model):
     name = models.CharField(max_length=255)
     num_songs = models.IntegerField(default=0)
     release_date = models.DateField('Release Date')
-    rating = models.IntegerField(default=0)
+
+    RATING_CHOICES = (
+        (0, '0 Stars'),
+        (1, '1 Star'),
+        (2, '2 Stars'),
+        (3, '3 Stars'),
+        (4, '4 Stars'),
+        (4, '5 Stars'),
+    )
+    rating = models.IntegerField(default=0, choices=RATING_CHOICES)
 
     def __unicode__(self):
         return self.name 
