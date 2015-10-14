@@ -11,9 +11,9 @@ class Genre(models.Model):
         return self.name
 
 class Artist(models.Model):
-    country = models.CharField(max_length=255, default='')
-    date_start = models.DateTimeField('Start Date')
-    date_end = models.DateTimeField('End Date', null=True)
+    country = models.CharField(max_length=255, default='', blank=True)
+    date_start = models.DateField('Start Date', blank=True, null=True)
+    date_end = models.DateField('End Date', null=True, blank=True)
     name = models.CharField(max_length=255)
     musicbrainz_id = models.IntegerField(default=0, null=True)
 
@@ -29,7 +29,7 @@ class Album(models.Model):
 
     name = models.CharField(max_length=255)
     num_songs = models.IntegerField(default=0)
-    release_date = models.DateField('Release Date')
+    release_date = models.DateField('Release Date', blank=True, null=True)
 
     RATING_CHOICES = (
         (0, '0 Stars'),
@@ -44,12 +44,16 @@ class Album(models.Model):
     def __unicode__(self):
         return self.name 
 
+    def is_good(self):
+        return self.rating >= 3
+
 class Pressing(models.Model):
     album = models.ForeignKey(Album)
 
-    label_name = models.CharField(max_length=255)
-    label_address = models.CharField(max_length=255)
-    artwork = models.ImageField()
+    label_name = models.CharField(max_length=255, blank=True)
+    label_address = models.CharField(max_length=255, blank=True)
+    artwork = models.ImageField(null=True, blank=True)
+    version_number = models.IntegerField(default=1)
 
     ALLOWED_FORMATS = (
         ('cd', 'CD'),
