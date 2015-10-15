@@ -1,3 +1,4 @@
+from django.contrib.auth.models import User as ModelUser
 from django.db import models
 from django.db import models
 from django.utils import timezone
@@ -9,6 +10,13 @@ class Genre(models.Model):
 
     def __unicode__(self):
         return self.name
+
+class RecordLabel(models.Model):
+    label_name = models.CharField(max_length=255, blank=True)
+    label_address = models.CharField(max_length=255, blank=True)
+
+    def __unicode__(self):
+        return self.label_name
 
 class Artist(models.Model):
     country = models.CharField(max_length=255, default='', blank=True)
@@ -49,9 +57,8 @@ class Album(models.Model):
 
 class Pressing(models.Model):
     album = models.ForeignKey(Album)
+    label = models.ForeignKey(RecordLabel)
 
-    label_name = models.CharField(max_length=255, blank=True)
-    label_address = models.CharField(max_length=255, blank=True)
     artwork = models.ImageField(null=True, blank=True)
     version_number = models.IntegerField(default=1)
 
@@ -62,3 +69,11 @@ class Pressing(models.Model):
         ('tape', 'Tape'),
     )
     release_format = models.CharField(max_length=255, choices=ALLOWED_FORMATS, default='')
+
+    def __unicode__(self):
+        return "{} : {}".format(self.album, self.get_release_format_display())
+
+class User(ModelUser):
+    owned_records = models.ManyToManyField(Pressing)
+    profile_picture = models.ImageField(null=True, blank=True)
+
