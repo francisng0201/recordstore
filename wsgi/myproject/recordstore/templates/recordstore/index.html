@@ -1,12 +1,5 @@
-<!DOCTYPE html>
-<head>
-    <title>Record Store index</title>
-    {% load staticfiles %}
-    <link rel="stylesheet" type="text/css" href="{% static 'recordstore/css/style.css' %}" />
-</head>
-    
-<body>
-    <h1>It's Aliiiive</h1>    
-</body>
+{% extends 'recordstore/includes/base.html' %}
 
-</html>
+{% block body %}
+    <p>It works</p>
+{% endblock %}

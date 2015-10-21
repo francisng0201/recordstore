@@ -1,6 +1,6 @@
-body {
+.main-container {
     width: 80%;
-    margin: auto;
+    margin: 50px auto 150px;
 }
 
 h1 {

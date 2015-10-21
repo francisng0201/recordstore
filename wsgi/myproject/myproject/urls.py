@@ -15,8 +15,10 @@ Including another URLconf
 """
 from django.conf.urls import include, url
 from django.contrib import admin
+from django.views.generic import RedirectView
 
 urlpatterns = [
-    url(r'^recordstore/', include('recordstore.urls')),
+    url(r'^/?$', RedirectView.as_view(url='recordstore')), # redirect to recordstore on empty request
+    url(r'^recordstore/', include('recordstore.urls', namespace='recordstore')),
     url(r'^admin/', include(admin.site.urls)),
 ]

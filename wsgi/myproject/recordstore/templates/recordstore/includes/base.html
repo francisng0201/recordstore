@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Recordstore</title>
+    {% load staticfiles %}
+
+    <link rel='stylesheet' type='text/css' href='{% static "recordstore/css/style.css" %}' />
+    {% block style %}
+    {% endblock %}
+
+    {% block scripts %}
+    {% endblock %}
+</head>
+<body>
+    <div class='topbar'>
+        <a href='{% url "recordstore:login" %}'>login</a>
+    </div>
+    <div class='main-container'>
+        {% block body %}
+        {% endblock %}
+    </div>
+</body>
+</html>
