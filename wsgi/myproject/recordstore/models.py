@@ -74,6 +74,6 @@ class Pressing(models.Model):
         return "{} : {}".format(self.album, self.get_release_format_display())
 
 class User(ModelUser):
-    owned_records = models.ManyToManyField(Pressing)
+    owned_records = models.ManyToManyField(Pressing, blank=True)
     profile_picture = models.ImageField(null=True, blank=True)
 
