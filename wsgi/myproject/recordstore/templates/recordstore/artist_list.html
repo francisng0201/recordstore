@@ -1,0 +1,22 @@
+{% extends 'recordstore/includes/base.html' %}
+
+{% block body %}
+    <ul>
+        {% for artist in object_list %}
+            <li>
+                <a href='{% url "recordstore:artist_detail" artist.id %}'>
+                    {{ artist }}
+                </a>
+            </li>
+        {% empty %}
+            <li>We know nothing about anything</li>
+        {% endfor %}
+    </ul>
+
+    <p>
+        Don't see the artist you're looking for here? Try 
+        <a href='{% url "recordstore:create_artist" %}'>
+            creating a new one
+        </a>.
+    </p>
+{% endblock %}

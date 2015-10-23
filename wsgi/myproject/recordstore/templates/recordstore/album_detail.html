@@ -1,0 +1,30 @@
+{% extends 'recordstore/includes/base.html' %}
+
+{% block body %}
+    <h3>{{ object }}</h3>
+
+    <h5>Details</h5>
+    <ul>
+        <li>Artist: 
+            <a href='{% url "recordstore:artist_detail" object.artist.id %}'>
+                {{ object.artist }}
+            </a>
+        </li>
+        <li>Release Date: {{ object.release_date }}</li>
+        <li>Number of Songs: {{ object.num_songs }}</li>
+        <li>Rating: {{ object.get_rating_display }}</li>
+    </ul>
+
+    <h5>Pressings</h5>
+    <ul>
+        {% for pressing in object.pressing_set.all %}
+            <li>
+                <a href='{% url "recordstore:pressing_detail" pressing.id %}'>
+                    {{ pressing }}
+                </a>
+            </li>
+        {% empty %}
+            <li>None</li>
+        {% endfor %}
+    </ul>
+{% endblock %}

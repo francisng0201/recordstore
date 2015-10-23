@@ -1,5 +1,17 @@
 {% extends 'recordstore/includes/base.html' %}
 
 {% block body %}
-    <p>It works</p>
+    <ul>
+        <li>
+            <a href='{% url "recordstore:all_records" %}'>
+                Look at all the albums we know about
+            </a>
+        </li>
+
+        <li>
+            <a href='{% url "recordstore:all_artists" %}'>
+                Look at all the artists we know about
+            </a>
+        </li>
+    </ul>
 {% endblock %}

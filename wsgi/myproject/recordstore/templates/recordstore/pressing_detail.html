@@ -1,0 +1,14 @@
+{% extends 'recordstore/includes/base.html' %}
+
+{% block body %}
+    <h3>
+        <a href='{% url "recordstore:album_detail" object.album.id %}'>
+            &larr; {{ object.album }}
+        </a>
+    </h3>
+    <ul>
+        <li>Label: {{ object.label }}</li>
+        <li>Pressing Number: {{ object.version_number }}</li>
+        <li>Format: {{ object.get_release_format_display }}</li>
+    </ul>
+{% endblock %}

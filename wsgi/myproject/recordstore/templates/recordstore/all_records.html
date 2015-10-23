@@ -1,0 +1,16 @@
+{% extends 'recordstore/includes/base.html' %}
+
+{% block body %}
+    <ul>
+        {% for record in records %}
+            <li>
+                <a href='{% url "recordstore:album_detail" record.id %}'>
+                    {{ record }}
+                </a>
+            </li>
+        {% empty %}
+            <li>There's nothing here... try adding a new one? wait that's not
+                implemented either, okay just like... come back later?</li>
+        {% endfor %}
+    </ul>
+{% endblock %}

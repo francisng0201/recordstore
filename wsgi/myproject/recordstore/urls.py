@@ -3,9 +3,21 @@ from django.conf.urls import url
 from . import views
 
 urlpatterns = [
-    url(r'^$', views.index, name='index'),
+    url(r'^$', views.home, name='home'),
+    # urls for loging in users
     url(r'^login', views.login_view, name='login'),
     url(r'^logout', views.logout_view, name='logout'),
     url(r'^authenticate$', views.authenticate_view, name='authenticate'),
-    url(r'^(?P<pk>[0-9]+)/$', views.detail, name='detail'),
+
+    # look at pressings/records in the database
+    url(r'^records/view\+all/?', views.all_records, name='all_records'),
+    url(r'^records/view/(?P<pk>[0-9]+)/?', views.AlbumDetailView.as_view(), name='album_detail'),
+    url(r'^records/view/pressing/(?P<pk>[0-9]+)/?', views.PressingDetailView.as_view(), name='pressing_detail'),
+
+    # look at information about artists
+    url(r'^artists/view\+all/?', views.ArtistListView.as_view(), name='all_artists'),
+    url(r'^artists/view/(?P<pk>[0-9]+)/?', views.ArtistDetailView.as_view(), name='artist_detail'),
+    url(r'^artists/create/?', views.create_artist, name='create_artist'),
+
+    # modify/view personal user information
 ]

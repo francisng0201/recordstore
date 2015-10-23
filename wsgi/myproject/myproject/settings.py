@@ -144,3 +144,6 @@ from django.conf import settings
 
 STATIC_URL = '/static/'
 STATIC_ROOT = os.path.join(WSGI_DIR, 'static')
+
+# Set the login url to redirect to 
+LOGIN_URL='/recordstore/login'

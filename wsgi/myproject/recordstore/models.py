@@ -65,8 +65,9 @@ class Pressing(models.Model):
     ALLOWED_FORMATS = (
         ('', 'Unknown'),
         ('cd', 'CD'),
-        ('vinyl_12', 'Vinyl 12 inch'),
-        ('vinyl_7', 'Vinyl 7 inch'),
+        ('vinyl_12', 'Vinyl - 12 inch'),
+        ('vinyl_10', 'Vinyl - 10 inch'),
+        ('vinyl_7', 'Vinyl - 7 inch'),
         ('tape', 'Tape'),
     )
     release_format = models.CharField(max_length=255, choices=ALLOWED_FORMATS, default='')

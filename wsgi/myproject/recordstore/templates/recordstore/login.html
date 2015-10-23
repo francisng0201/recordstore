@@ -2,10 +2,12 @@
 
 {% block body %}
 
-<form action='{% url "recordstore:authenticate" %}' method='POST'>
-    {% csrf_token %}
-    {{ form }}
-    <button type='submit'>Login</button>
-</form>
+    <h4>Login</h4>
+    <form action='{% url "recordstore:authenticate" %}' method='POST'>
+        {% csrf_token %}
+        <input type='hidden' name='next' value='{{ next }}'>
+        {{ form.as_p }}
+        <button type='submit'>Login</button>
+    </form>
 
 {% endblock %}
