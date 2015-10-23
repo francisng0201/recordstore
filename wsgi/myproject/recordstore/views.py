@@ -65,6 +65,19 @@ class AlbumDetailView(DetailView):
 class PressingDetailView(DetailView):
     model = Pressing
 
+@login_required
+def create_album(request):
+    context = {
+        'album_form' : AlbumForm()
+    }
+    return render(request, 'recordstore/create_album.html', context)
+
+@login_required
+def process_album(request):
+    album_form = AlbumForm(request.POST)
+    album_form.save()
+    return redirect(reverse('recordstore:all_records', args=[]))
+
 #
 # Artist-centric view
 #
@@ -81,3 +94,9 @@ def create_artist(request):
         'artist_form' : ArtistForm()
     }
     return render(request, 'recordstore/create_artist.html', context)
+
+@login_required
+def process_artist(request):
+    artist_form = ArtistForm(request.POST)
+    artist_form.save()
+    return redirect(reverse('recordstore:all_artists', args=[]))

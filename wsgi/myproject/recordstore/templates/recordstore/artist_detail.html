@@ -3,6 +3,7 @@
 {% block body %}
     <h3>{{ object }}</h3>
 
+    <h5>Albums</h5>
     <ul>
         {% for album in object.album_set.all %}
             <li>
@@ -14,4 +15,11 @@
             <li>No albums</li>
         {% endfor %}
     </ul>
+
+    <p>
+        Missing an album? Create it 
+        <a href='{% url "recordstore:create_album" %}'>
+            here
+        </a>
+    </p>
 {% endblock %}

@@ -45,7 +45,7 @@ class Album(models.Model):
         (2, '2 Stars'),
         (3, '3 Stars'),
         (4, '4 Stars'),
-        (4, '5 Stars'),
+        (5, '5 Stars'),
     )
     rating = models.IntegerField(default=0, choices=RATING_CHOICES)
 
