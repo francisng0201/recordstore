@@ -1,8 +1,11 @@
 {% extends 'recordstore/includes/base.html' %}
 
 {% block body %}
+    <h3>Update {{ artist }}</h3>
+
     <form action='{% url "recordstore:process_artist" %}'method="POST">
         {% csrf_token %}
+        <input name='artist_id' type='hidden' value='{{artist.id}}'>
         {{ artist_form.as_p }}
         <button type='submit'>Submit</button>
     </form>

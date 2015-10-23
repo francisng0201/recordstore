@@ -27,4 +27,11 @@
             <li>None</li>
         {% endfor %}
     </ul>
+
+    <p>
+        Is there a pressing you think is missing? Create it 
+        <a href='{% url "recordstore:create_pressing" %}'>
+            here.
+        </a>
+    </p>
 {% endblock %}

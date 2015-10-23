@@ -1,0 +1,16 @@
+{% extends 'recordstore/includes/base.html' %}
+
+{% block body %}
+    <form action='{% url "recordstore:process_pressing" %}'method="POST">
+        {% csrf_token %}
+        {{ pressing_form.as_p }}
+        <button type='submit'>Submit</button>
+    </form>
+
+    <p>
+        Missing a record label? Create it first
+        <a href='{% url "recordstore:create_record_label" %}'>
+            here.
+        </a>
+    </p>
+{% endblock %}

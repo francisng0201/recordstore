@@ -3,7 +3,7 @@ from django.contrib.auth import authenticate, login, logout
 from django.contrib.auth.decorators import login_required
 from django.core.urlresolvers import reverse
 from django.http import HttpResponseRedirect as redirect
-from django.shortcuts import render
+from django.shortcuts import render, get_object_or_404
 from django.views.generic.detail import DetailView
 from django.views.generic.list import ListView
 
@@ -49,7 +49,7 @@ def authenticate_view(request):
         return redirect(next_url)
 
 #
-# Album and Pressing-centric view
+# Album-centric view
 #
 
 def all_records(request):
@@ -79,6 +79,23 @@ def process_album(request):
     return redirect(reverse('recordstore:all_records', args=[]))
 
 #
+# Album-centric view
+#
+
+@login_required
+def create_pressing(request):
+    context = {
+        'pressing_form' : PressingForm()
+    }
+    return render(request, 'recordstore/create_pressing.html', context)
+
+@login_required
+def process_pressing(request):
+    pressing_form = PressingForm(request.POST)
+    pressing_form.save()
+    return redirect(reverse('recordstore:all_records', args=[]))
+
+#
 # Artist-centric view
 #
 
@@ -96,7 +113,41 @@ def create_artist(request):
     return render(request, 'recordstore/create_artist.html', context)
 
 @login_required
+def update_artist(request, pk):
+    artist = get_object_or_404(Artist, pk=pk)
+    context = {
+        'artist' : artist,
+        'artist_form' : ArtistForm(instance=artist)
+    }
+    return render(request, 'recordstore/update_artist.html', context)
+
+@login_required
 def process_artist(request):
-    artist_form = ArtistForm(request.POST)
-    artist_form.save()
+    artist_id = request.POST.get('artist_id', None)
+
+    if artist_id != None:
+        artist = get_object_or_404(Artist, pk=artist_id)
+        artist_form = ArtistForm(instance=artist, data=request.POST)
+        artist_form.save()
+    else:
+        artist_form = ArtistForm(request.POST)
+        artist_form.save()
+
     return redirect(reverse('recordstore:all_artists', args=[]))
+
+#
+# Label-centric view
+#
+
+@login_required
+def create_record_label(request):
+    context = {
+        'record_label_form' : RecordLabelForm()
+    }
+    return render(request, 'recordstore/create_record_label.html', context)
+
+@login_required
+def process_record_label(request):
+    record_label_form = RecordLabelForm(request.POST)
+    record_label_form.save()
+    return redirect(reverse('recordstore:home', args=[]))
