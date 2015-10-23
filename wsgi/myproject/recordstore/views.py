@@ -21,7 +21,6 @@ def login_view(request):
     }
     return render(request, 'recordstore/login.html', context)
 
-@login_required(login_url='/recordstore/login')
 def logout_view(request):
     name = request.user.username
     logout(request)

@@ -63,6 +63,7 @@ class Pressing(models.Model):
     version_number = models.IntegerField(default=1)
 
     ALLOWED_FORMATS = (
+        ('', 'Unknown'),
         ('cd', 'CD'),
         ('vinyl_12', 'Vinyl 12 inch'),
         ('vinyl_7', 'Vinyl 7 inch'),
@@ -73,7 +74,11 @@ class Pressing(models.Model):
     def __unicode__(self):
         return "{} : {}".format(self.album, self.get_release_format_display())
 
-class User(ModelUser):
+class User(models.Model):
+    user = models.OneToOneField(ModelUser)
+
     owned_records = models.ManyToManyField(Pressing, blank=True)
     profile_picture = models.ImageField(null=True, blank=True)
+
+    friends = models.ManyToManyField('self', blank=True)
 

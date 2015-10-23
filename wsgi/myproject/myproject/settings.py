@@ -22,10 +22,11 @@ https://docs.djangoproject.com/en/1.8/ref/settings/
 import os
 os.environ.setdefault('OPENSHIFT_DATA_DIR', '/home/kovaka/Projects/recordstore/data/')
 os.environ.setdefault('OPENSHIFT_APP_DNS', 'recordstore-kovaka.rhcloud.com')
-os.environ.setdefault('OPENSHIFT_MYSQL_DB_USERNAME', 'adminmn7uZyV')
-os.environ.setdefault('OPENSHIFT_MYSQL_DB_PASSWORD', '4r7gIuZKGPRB')
-os.environ.setdefault('OPENSHIFT_MYSQL_DB_HOST', '127.0.0.1')
-os.environ.setdefault('OPENSHIFT_MYSQL_DB_PORT', '3306')
+os.environ.setdefault('OPENSHIFT_POSTGRESQL_DB_NAME', 'recordstore')
+os.environ.setdefault('OPENSHIFT_POSTGRESQL_DB_USERNAME', 'adminbpcfu4q')
+os.environ.setdefault('OPENSHIFT_POSTGRESQL_DB_PASSWORD', 'VJjZjVfZmdA6')
+os.environ.setdefault('OPENSHIFT_POSTGRESQL_DB_HOST', '127.0.0.1')
+os.environ.setdefault('OPENSHIFT_POSTGRESQL_DB_PORT', '5432')
 os.environ.setdefault('DEBUG', 'True')
 
 # /////////////////////////////////////////////////////////////////////////////
@@ -114,12 +115,12 @@ WSGI_APPLICATION = PROJECT_NAME + '.wsgi.application'
 
 DATABASES = {
     'default': {
-        'ENGINE': 'django.db.backends.mysql',
+        'ENGINE': 'django.db.backends.postgresql_psycopg2',
         'NAME': 'recordstore',
-        'USER': os.environ.get('OPENSHIFT_MYSQL_DB_USERNAME'),
-        'PASSWORD': os.environ.get('OPENSHIFT_MYSQL_DB_PASSWORD'),
-        'HOST': os.environ.get('OPENSHIFT_MYSQL_DB_HOST'),
-        'PORT': os.environ.get('OPENSHIFT_MYSQL_DB_PORT'),
+        'USER': os.environ.get('OPENSHIFT_POSTGRESQL_DB_USERNAME'),
+        'PASSWORD': os.environ.get('OPENSHIFT_POSTGRESQL_DB_PASSWORD'),
+        'HOST': os.environ.get('OPENSHIFT_POSTGRESQL_DB_HOST'),
+        'PORT': os.environ.get('OPENSHIFT_POSTGRESQL_DB_PORT'),
     }
 }
 
