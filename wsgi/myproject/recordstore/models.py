@@ -78,8 +78,25 @@ class Pressing(models.Model):
 class User(models.Model):
     user = models.OneToOneField(ModelUser)
 
-    owned_records = models.ManyToManyField(Pressing, blank=True)
     profile_picture = models.ImageField(null=True, blank=True)
 
     friends = models.ManyToManyField('self', blank=True)
+
+    def __unicode__(self):
+        return '{}'.format(self.user)
+
+class OwnedRecord(models.Model):
+    owner = models.ForeignKey(User)
+    
+    album = models.ForeignKey(Album)
+    pressing = models.ForeignKey(Pressing, blank=True, null=True)
+
+    class Meta:
+        unique_together = ('album', 'pressing',)
+
+    def __unicode__(self):
+        if pressing == None:
+            return '{}'.format(album)
+        else:
+            return '{}'.format(pressing)
 

@@ -15,6 +15,8 @@
         <li>Rating: {{ object.get_rating_display }}</li>
     </ul>
 
+    <p><a href='{% url "recordstore:update_album" object.id %}'>Update {{ object }}</a></p>
+
     <h5>Pressings</h5>
     <ul>
         {% for pressing in object.pressing_set.all %}
