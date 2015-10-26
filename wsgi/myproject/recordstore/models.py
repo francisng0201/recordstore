@@ -95,8 +95,12 @@ class OwnedRecord(models.Model):
         unique_together = ('album', 'pressing',)
 
     def __unicode__(self):
-        if pressing == None:
-            return '{}'.format(album)
+        if self.pressing == None:
+            return '{}'.format(self.album)
         else:
-            return '{}'.format(pressing)
+            return '{}'.format(self.pressing)
+
+    def save(self, *args, **kwargs):
+        if self.pressing == None:
+            super(OwnedRecord, self).save(*args, **kwargs)
 

@@ -24,23 +24,10 @@ class AlbumInline(admin.StackedInline):
 class ArtistAdmin(admin.ModelAdmin):
     inlines = [AlbumInline]
 
+class OwnedRecordInline(admin.StackedInline):
+    model = OwnedRecord
+    extra = 1
+
 @admin.register(User)
 class UserAdmin(admin.ModelAdmin):
-    fieldsets = (
-        ('User Info', {
-            'fields' : (
-                'username', 
-                'password', 
-                'first_name', 
-                'last_name',
-                'email', 
-                'profile_picture', 
-                'is_active',
-            ),
-            'classes' : ('extrapretty',),
-        }),
-        ('Records', {
-            'fields' : ('owned_records',),
-            'classes' : ('wide', 'extrapretty'),
-        }),
-    )
+    inlines = [OwnedRecordInline,]
