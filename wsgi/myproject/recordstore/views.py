@@ -53,6 +53,8 @@ def authenticate_view(request):
 # Views for looking at a personal record collection
 #
 
+def view_collection(request):
+    return redirect(reverse('recordstore:home', args=[]))
 
 #
 # Album-centric views
