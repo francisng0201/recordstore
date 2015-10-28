@@ -62,3 +62,14 @@ class RecordLabelForm(ModelForm):
             'label_name',
             'label_address',
         ]
+
+class OwnedRecordForm(ModelForm):
+
+    class Meta:
+        model = OwnedRecord
+
+        fields = [
+            'owner',
+            'album',
+            'pressing'
+        ]

@@ -3,6 +3,7 @@ from django.contrib.auth import authenticate, login, logout
 from django.contrib.auth.decorators import login_required
 from django.core.urlresolvers import reverse
 from django.http import HttpResponseRedirect as redirect
+from django.http import JsonResponse
 from django.shortcuts import render, get_object_or_404
 from django.views.generic.detail import DetailView
 from django.views.generic.list import ListView
@@ -50,11 +51,52 @@ def authenticate_view(request):
 
 
 #
-# Views for looking at a personal record collection
+# Views for modifying/looking at a personal record collection
 #
 
+@login_required
 def view_collection(request):
     return redirect(reverse('recordstore:home', args=[]))
+
+@login_required
+def view_profile(request):
+    recordstore_user = User.objects.get(pk=request.user.id)
+    context = {
+        'rc_user' : recordstore_user,
+        'records' : recordstore_user.ownedrecord_set.all(),
+    }
+    return render(request, 'recordstore/view_profile.html', context)
+
+@login_required
+def add_to_collection(request):
+    user = User.objects.get(pk=request.user.id)
+    album_id = request.POST.get('album_id', None)
+    pressing_id = request.POST.get('pressing_id', None)
+
+    if album_id == None:
+        response['message'] = 'album_id cannot be null'
+        response['success'] = False
+        return JsonResponse(response)
+
+    record = {
+        'owner_id' : user.id,
+        'album_id' : album_id,
+        'pressing_id' : pressing_id,
+    }
+
+    response = {}
+    try:
+        form = OwnedRecordForm(record)
+        form.save()
+    except ValidationError:
+        response['message'] = 'Failed To Validate'
+        response['success'] = False
+    else:
+        response['messsage'] = 'Success'
+        response['success'] = True
+
+    return JsonResponse(response)
+
 
 #
 # Album-centric views

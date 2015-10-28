@@ -85,6 +85,9 @@ class User(models.Model):
     friends = models.ManyToManyField('self', blank=True)
 
     def __unicode__(self):
+        return self.user.__unicode__()
+
+    def __unicode__(self):
         return '{}'.format(self.user)
 
 class OwnedRecord(models.Model):

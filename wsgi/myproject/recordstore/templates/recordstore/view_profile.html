@@ -1,0 +1,19 @@
+{% extends 'recordstore/includes/base.html' %}
+
+{% block body %}
+    <h3>{{ rc_user }}</h3>
+
+    <h4>Collection</h4>
+    <ul>
+    {% for record in records %}
+        <li>
+            <a href='{% url "recordstore:album_detail" record.album.id %}'>
+            {{ record }}
+            </a>
+        </li>
+    {% empty %}
+        <li>You don't own any records...</li>
+    {% endfor %}
+    </ul>
+
+{% endblock %}

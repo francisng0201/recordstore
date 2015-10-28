@@ -30,6 +30,8 @@ urlpatterns = [
 
     # modify/view personal user information
     url(r'^collection/view', views.view_collection, name='view_collection'),
+    url(r'^collection/add', view.add_to_collection, name='add_to_collection'),
+    url(r'^profile/view', views.view_profile, name='view_profile'),
 
     # create and process new record labels
     url(r'^record\+label/create', views.create_record_label, name='create_record_label'),
