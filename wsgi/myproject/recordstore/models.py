@@ -1,4 +1,5 @@
 from django.contrib.auth.models import User as ModelUser
+from django.core.exceptions import ValidationError
 from django.db import models
 from django.db import models
 from django.utils import timezone
@@ -66,6 +67,7 @@ class Pressing(models.Model):
         ('', 'Unknown'),
         ('cd', 'CD'),
         ('vinyl_12', 'Vinyl - 12 inch'),
+        ('vinyl_2_12', 'Vinyl - Double LP 12 inch'),
         ('vinyl_10', 'Vinyl - 10 inch'),
         ('vinyl_7', 'Vinyl - 7 inch'),
         ('tape', 'Tape'),
@@ -78,8 +80,34 @@ class Pressing(models.Model):
 class User(models.Model):
     user = models.OneToOneField(ModelUser)
 
-    owned_records = models.ManyToManyField(Pressing, blank=True)
     profile_picture = models.ImageField(null=True, blank=True)
 
     friends = models.ManyToManyField('self', blank=True)
 
+    def __unicode__(self):
+        return '{}'.format(self.user)
+
+class OwnedRecord(models.Model):
+    owner = models.ForeignKey(User)
+    
+    album = models.ForeignKey(Album)
+    pressing = models.ForeignKey(Pressing, blank=True, null=True)
+
+    class Meta:
+        unique_together = ('album', 'pressing',)
+
+    def __unicode__(self):
+        if self.pressing == None:
+            return '{}'.format(self.album)
+        else:
+            return '{}'.format(self.pressing)
+
+    def save(self, *args, **kwargs):
+        if self.pressing == None:
+            super(OwnedRecord, self).save(*args, **kwargs)
+        else:
+            # make sure the album is actually associated with the pressing
+            if self.pressing in self.album.pressing_set.all():
+                super(OwnedRecord, self).save(*args, **kwargs)
+            else:
+                raise ValidationError('Pressing must be in this album\'s pressing set')

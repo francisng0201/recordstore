@@ -15,11 +15,13 @@
 <body>
     <div class='topbar'>
         <a href='{% url "recordstore:home" %}'>home</a>
+
         {% if not user.is_authenticated %}
             <a href='{% url "recordstore:login" %}'>login</a>
         {% else %}
             <a href='{% url "recordstore:logout" %}'>log out</a>
         {% endif %}
+
     </div>
     <div class='main-container'>
         <h2>Recordstore</h3>

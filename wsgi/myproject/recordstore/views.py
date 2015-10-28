@@ -14,7 +14,7 @@ def home(request):
     return render(request, 'recordstore/index.html', {});
 
 # 
-# views related to logging in and out
+# logging in and out views
 #
 
 def login_view(request):
@@ -48,8 +48,16 @@ def authenticate_view(request):
     else:
         return redirect(next_url)
 
+
 #
-# Album-centric view
+# Views for looking at a personal record collection
+#
+
+def view_collection(request):
+    return redirect(reverse('recordstore:home', args=[]))
+
+#
+# Album-centric views
 #
 
 def all_records(request):
@@ -62,9 +70,6 @@ def all_records(request):
 class AlbumDetailView(DetailView):
     model = Album
 
-class PressingDetailView(DetailView):
-    model = Pressing
-
 @login_required
 def create_album(request):
     context = {
@@ -73,14 +78,34 @@ def create_album(request):
     return render(request, 'recordstore/create_album.html', context)
 
 @login_required
+def update_album(request, pk):
+    album = get_object_or_404(Album, pk=pk)
+    context = {
+        'album' : album,
+        'album_form' : AlbumForm(instance=album)
+    }
+    return render(request, 'recordstore/update_album.html', context)
+
+@login_required
 def process_album(request):
-    album_form = AlbumForm(request.POST)
+    album_id = request.POST.get('album_id', None)
+
+    if album_id != None:
+        album = get_object_or_404(Album, pk=album_id)
+        album_form = AlbumForm(instance=album, data=request.POST)
+    else:
+        album_form = AlbumForm(request.POST)
+
     album_form.save()
+
     return redirect(reverse('recordstore:all_records', args=[]))
 
 #
-# Album-centric view
+# Pressing-centric views
 #
+
+class PressingDetailView(DetailView):
+    model = Pressing
 
 @login_required
 def create_pressing(request):
@@ -96,7 +121,7 @@ def process_pressing(request):
     return redirect(reverse('recordstore:all_records', args=[]))
 
 #
-# Artist-centric view
+# Artist-centric views
 #
 
 class ArtistListView(ListView):
@@ -136,7 +161,7 @@ def process_artist(request):
     return redirect(reverse('recordstore:all_artists', args=[]))
 
 #
-# Label-centric view
+# Record Label-centric views
 #
 
 @login_required
