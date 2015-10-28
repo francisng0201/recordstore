@@ -18,7 +18,7 @@ from django.contrib import admin
 from django.views.generic import RedirectView
 
 urlpatterns = [
-    url(r'^/?$', RedirectView.as_view(url='recordstore')), # redirect to recordstore on empty request
+    url(r'^/?$', RedirectView.as_view(url='recordstore', permanent=True)), # redirect to recordstore on empty request
     url(r'^recordstore/', include('recordstore.urls', namespace='recordstore')),
     url(r'^admin/', include(admin.site.urls)),
 ]

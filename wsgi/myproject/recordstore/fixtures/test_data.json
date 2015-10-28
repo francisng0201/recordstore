@@ -1,0 +1,991 @@
+[
+{
+    "fields": {
+        "model": "logentry",
+        "app_label": "admin"
+    },
+    "model": "contenttypes.contenttype",
+    "pk": 1
+},
+{
+    "fields": {
+        "model": "permission",
+        "app_label": "auth"
+    },
+    "model": "contenttypes.contenttype",
+    "pk": 2
+},
+{
+    "fields": {
+        "model": "group",
+        "app_label": "auth"
+    },
+    "model": "contenttypes.contenttype",
+    "pk": 3
+},
+{
+    "fields": {
+        "model": "user",
+        "app_label": "auth"
+    },
+    "model": "contenttypes.contenttype",
+    "pk": 4
+},
+{
+    "fields": {
+        "model": "contenttype",
+        "app_label": "contenttypes"
+    },
+    "model": "contenttypes.contenttype",
+    "pk": 5
+},
+{
+    "fields": {
+        "model": "session",
+        "app_label": "sessions"
+    },
+    "model": "contenttypes.contenttype",
+    "pk": 6
+},
+{
+    "fields": {
+        "model": "genre",
+        "app_label": "recordstore"
+    },
+    "model": "contenttypes.contenttype",
+    "pk": 7
+},
+{
+    "fields": {
+        "model": "recordlabel",
+        "app_label": "recordstore"
+    },
+    "model": "contenttypes.contenttype",
+    "pk": 8
+},
+{
+    "fields": {
+        "model": "artist",
+        "app_label": "recordstore"
+    },
+    "model": "contenttypes.contenttype",
+    "pk": 9
+},
+{
+    "fields": {
+        "model": "album",
+        "app_label": "recordstore"
+    },
+    "model": "contenttypes.contenttype",
+    "pk": 10
+},
+{
+    "fields": {
+        "model": "pressing",
+        "app_label": "recordstore"
+    },
+    "model": "contenttypes.contenttype",
+    "pk": 11
+},
+{
+    "fields": {
+        "model": "user",
+        "app_label": "recordstore"
+    },
+    "model": "contenttypes.contenttype",
+    "pk": 12
+},
+{
+    "fields": {
+        "model": "ownedrecord",
+        "app_label": "recordstore"
+    },
+    "model": "contenttypes.contenttype",
+    "pk": 13
+},
+{
+    "fields": {
+        "expire_date": "2015-11-11T10:50:00.227Z",
+        "session_data": "OTY1ZWNhMWY2ZTc2N2UwZjk5NWUxZTQzMmJlMmYxMjRjMDYxODY4ODp7Il9hdXRoX3VzZXJfaGFzaCI6IjU3OTc5OGI5NzEwZWEwNmUwZTcyYjcyMDVjOWRhZDQzZjMzZDFjODkiLCJfYXV0aF91c2VyX2JhY2tlbmQiOiJkamFuZ28uY29udHJpYi5hdXRoLmJhY2tlbmRzLk1vZGVsQmFja2VuZCIsIl9hdXRoX3VzZXJfaWQiOiIxIn0="
+    },
+    "model": "sessions.session",
+    "pk": "406zhurjl9ewo6nmykewob6rhbh2rawh"
+},
+{
+    "fields": {
+        "expire_date": "2015-11-06T21:23:34.809Z",
+        "session_data": "OGExMmFhOWE1ZWFiMWFkZWI0MGQwYzg2NmJkZjNlYjY0ZmU5NmUyYTp7Il9hdXRoX3VzZXJfaGFzaCI6ImE0YTE3YmJmZmE3YmVjZmY1Y2FmNmNlZGQzYmU4MTZjZmQ4NWI4NzUiLCJfYXV0aF91c2VyX2JhY2tlbmQiOiJkamFuZ28uY29udHJpYi5hdXRoLmJhY2tlbmRzLk1vZGVsQmFja2VuZCIsIl9hdXRoX3VzZXJfaWQiOiIxIn0="
+    },
+    "model": "sessions.session",
+    "pk": "b35hleygbh2of9apk6epfvuj8w0pa6dv"
+},
+{
+    "fields": {
+        "expire_date": "2015-11-09T18:23:58.687Z",
+        "session_data": "OTY1ZWNhMWY2ZTc2N2UwZjk5NWUxZTQzMmJlMmYxMjRjMDYxODY4ODp7Il9hdXRoX3VzZXJfaGFzaCI6IjU3OTc5OGI5NzEwZWEwNmUwZTcyYjcyMDVjOWRhZDQzZjMzZDFjODkiLCJfYXV0aF91c2VyX2JhY2tlbmQiOiJkamFuZ28uY29udHJpYi5hdXRoLmJhY2tlbmRzLk1vZGVsQmFja2VuZCIsIl9hdXRoX3VzZXJfaWQiOiIxIn0="
+    },
+    "model": "sessions.session",
+    "pk": "b8k85gh3dy7t63rjo9a2yan4zc1nph12"
+},
+{
+    "fields": {
+        "expire_date": "2015-11-06T19:32:44.854Z",
+        "session_data": "OTY1ZWNhMWY2ZTc2N2UwZjk5NWUxZTQzMmJlMmYxMjRjMDYxODY4ODp7Il9hdXRoX3VzZXJfaGFzaCI6IjU3OTc5OGI5NzEwZWEwNmUwZTcyYjcyMDVjOWRhZDQzZjMzZDFjODkiLCJfYXV0aF91c2VyX2JhY2tlbmQiOiJkamFuZ28uY29udHJpYi5hdXRoLmJhY2tlbmRzLk1vZGVsQmFja2VuZCIsIl9hdXRoX3VzZXJfaWQiOiIxIn0="
+    },
+    "model": "sessions.session",
+    "pk": "jyheb3dp78a9vlh5phymxe6iyfaao5rr"
+},
+{
+    "fields": {
+        "expire_date": "2015-11-09T18:05:46.269Z",
+        "session_data": "OGExMmFhOWE1ZWFiMWFkZWI0MGQwYzg2NmJkZjNlYjY0ZmU5NmUyYTp7Il9hdXRoX3VzZXJfaGFzaCI6ImE0YTE3YmJmZmE3YmVjZmY1Y2FmNmNlZGQzYmU4MTZjZmQ4NWI4NzUiLCJfYXV0aF91c2VyX2JhY2tlbmQiOiJkamFuZ28uY29udHJpYi5hdXRoLmJhY2tlbmRzLk1vZGVsQmFja2VuZCIsIl9hdXRoX3VzZXJfaWQiOiIxIn0="
+    },
+    "model": "sessions.session",
+    "pk": "nas2aq1fbjzn6zoibpnc8elcwdiy0fmt"
+},
+{
+    "fields": {},
+    "model": "recordstore.genre",
+    "pk": "unknown"
+},
+{
+    "fields": {
+        "label_name": "Run For Cover",
+        "label_address": ""
+    },
+    "model": "recordstore.recordlabel",
+    "pk": 1
+},
+{
+    "fields": {
+        "label_name": "EMI",
+        "label_address": ""
+    },
+    "model": "recordstore.recordlabel",
+    "pk": 2
+},
+{
+    "fields": {
+        "label_name": "Sony BMG",
+        "label_address": ""
+    },
+    "model": "recordstore.recordlabel",
+    "pk": 3
+},
+{
+    "fields": {
+        "label_name": "No Sleep Records",
+        "label_address": ""
+    },
+    "model": "recordstore.recordlabel",
+    "pk": 4
+},
+{
+    "fields": {
+        "label_name": "Deathwish",
+        "label_address": ""
+    },
+    "model": "recordstore.recordlabel",
+    "pk": 5
+},
+{
+    "fields": {
+        "label_name": "Skeletal Lightening ",
+        "label_address": ""
+    },
+    "model": "recordstore.recordlabel",
+    "pk": 6
+},
+{
+    "fields": {
+        "label_name": "Tiny Engines",
+        "label_address": ""
+    },
+    "model": "recordstore.recordlabel",
+    "pk": 7
+},
+{
+    "fields": {
+        "label_name": "Solidarity Recordings",
+        "label_address": ""
+    },
+    "model": "recordstore.recordlabel",
+    "pk": 8
+},
+{
+    "fields": {
+        "country": "United States",
+        "date_end": null,
+        "date_start": null,
+        "musicbrainz_id": 0,
+        "name": "Cloakroom"
+    },
+    "model": "recordstore.artist",
+    "pk": 1
+},
+{
+    "fields": {
+        "country": "United States",
+        "date_end": null,
+        "date_start": null,
+        "musicbrainz_id": 0,
+        "name": "Run Forever"
+    },
+    "model": "recordstore.artist",
+    "pk": 3
+},
+{
+    "fields": {
+        "country": "United States",
+        "date_end": null,
+        "date_start": null,
+        "musicbrainz_id": 0,
+        "name": "Not Cloakroom"
+    },
+    "model": "recordstore.artist",
+    "pk": 4
+},
+{
+    "fields": {
+        "rating": 4,
+        "name": "Further Out",
+        "num_songs": 10,
+        "artist": 1,
+        "release_date": "2015-01-20",
+        "genre": "unknown"
+    },
+    "model": "recordstore.album",
+    "pk": 1
+},
+{
+    "fields": {
+        "rating": 5,
+        "name": "The Devil, and Death, and Me",
+        "num_songs": 0,
+        "artist": 3,
+        "release_date": null,
+        "genre": "unknown"
+    },
+    "model": "recordstore.album",
+    "pk": 3
+},
+{
+    "fields": {
+        "rating": 0,
+        "name": "Infinity",
+        "num_songs": 5,
+        "artist": 1,
+        "release_date": null,
+        "genre": "unknown"
+    },
+    "model": "recordstore.album",
+    "pk": 7
+},
+{
+    "fields": {
+        "album": 1,
+        "release_format": "vinyl_12",
+        "version_number": 1,
+        "artwork": "",
+        "label": 1
+    },
+    "model": "recordstore.pressing",
+    "pk": 1
+},
+{
+    "fields": {
+        "album": 1,
+        "release_format": "cd",
+        "version_number": 1,
+        "artwork": "",
+        "label": 1
+    },
+    "model": "recordstore.pressing",
+    "pk": 2
+},
+{
+    "fields": {
+        "album": 3,
+        "release_format": "vinyl_12",
+        "version_number": 1,
+        "artwork": "",
+        "label": 7
+    },
+    "model": "recordstore.pressing",
+    "pk": 3
+},
+{
+    "fields": {
+        "album": 3,
+        "release_format": "vinyl_12",
+        "version_number": 2,
+        "artwork": "",
+        "label": 8
+    },
+    "model": "recordstore.pressing",
+    "pk": 4
+},
+{
+    "fields": {
+        "album": 1,
+        "release_format": "tape",
+        "version_number": 2,
+        "artwork": "",
+        "label": 1
+    },
+    "model": "recordstore.pressing",
+    "pk": 6
+},
+{
+    "fields": {
+        "owner": 1,
+        "album": 7,
+        "pressing": null
+    },
+    "model": "recordstore.ownedrecord",
+    "pk": 1
+},
+{
+    "fields": {
+        "owner": 1,
+        "album": 1,
+        "pressing": 1
+    },
+    "model": "recordstore.ownedrecord",
+    "pk": 2
+},
+{
+    "fields": {
+        "owner": 1,
+        "album": 1,
+        "pressing": 2
+    },
+    "model": "recordstore.ownedrecord",
+    "pk": 3
+},
+{
+    "fields": {
+        "codename": "add_logentry",
+        "name": "Can add log entry",
+        "content_type": 1
+    },
+    "model": "auth.permission",
+    "pk": 1
+},
+{
+    "fields": {
+        "codename": "change_logentry",
+        "name": "Can change log entry",
+        "content_type": 1
+    },
+    "model": "auth.permission",
+    "pk": 2
+},
+{
+    "fields": {
+        "codename": "delete_logentry",
+        "name": "Can delete log entry",
+        "content_type": 1
+    },
+    "model": "auth.permission",
+    "pk": 3
+},
+{
+    "fields": {
+        "codename": "add_permission",
+        "name": "Can add permission",
+        "content_type": 2
+    },
+    "model": "auth.permission",
+    "pk": 4
+},
+{
+    "fields": {
+        "codename": "change_permission",
+        "name": "Can change permission",
+        "content_type": 2
+    },
+    "model": "auth.permission",
+    "pk": 5
+},
+{
+    "fields": {
+        "codename": "delete_permission",
+        "name": "Can delete permission",
+        "content_type": 2
+    },
+    "model": "auth.permission",
+    "pk": 6
+},
+{
+    "fields": {
+        "codename": "add_group",
+        "name": "Can add group",
+        "content_type": 3
+    },
+    "model": "auth.permission",
+    "pk": 7
+},
+{
+    "fields": {
+        "codename": "change_group",
+        "name": "Can change group",
+        "content_type": 3
+    },
+    "model": "auth.permission",
+    "pk": 8
+},
+{
+    "fields": {
+        "codename": "delete_group",
+        "name": "Can delete group",
+        "content_type": 3
+    },
+    "model": "auth.permission",
+    "pk": 9
+},
+{
+    "fields": {
+        "codename": "add_user",
+        "name": "Can add user",
+        "content_type": 4
+    },
+    "model": "auth.permission",
+    "pk": 10
+},
+{
+    "fields": {
+        "codename": "change_user",
+        "name": "Can change user",
+        "content_type": 4
+    },
+    "model": "auth.permission",
+    "pk": 11
+},
+{
+    "fields": {
+        "codename": "delete_user",
+        "name": "Can delete user",
+        "content_type": 4
+    },
+    "model": "auth.permission",
+    "pk": 12
+},
+{
+    "fields": {
+        "codename": "add_contenttype",
+        "name": "Can add content type",
+        "content_type": 5
+    },
+    "model": "auth.permission",
+    "pk": 13
+},
+{
+    "fields": {
+        "codename": "change_contenttype",
+        "name": "Can change content type",
+        "content_type": 5
+    },
+    "model": "auth.permission",
+    "pk": 14
+},
+{
+    "fields": {
+        "codename": "delete_contenttype",
+        "name": "Can delete content type",
+        "content_type": 5
+    },
+    "model": "auth.permission",
+    "pk": 15
+},
+{
+    "fields": {
+        "codename": "add_session",
+        "name": "Can add session",
+        "content_type": 6
+    },
+    "model": "auth.permission",
+    "pk": 16
+},
+{
+    "fields": {
+        "codename": "change_session",
+        "name": "Can change session",
+        "content_type": 6
+    },
+    "model": "auth.permission",
+    "pk": 17
+},
+{
+    "fields": {
+        "codename": "delete_session",
+        "name": "Can delete session",
+        "content_type": 6
+    },
+    "model": "auth.permission",
+    "pk": 18
+},
+{
+    "fields": {
+        "codename": "add_genre",
+        "name": "Can add genre",
+        "content_type": 7
+    },
+    "model": "auth.permission",
+    "pk": 19
+},
+{
+    "fields": {
+        "codename": "change_genre",
+        "name": "Can change genre",
+        "content_type": 7
+    },
+    "model": "auth.permission",
+    "pk": 20
+},
+{
+    "fields": {
+        "codename": "delete_genre",
+        "name": "Can delete genre",
+        "content_type": 7
+    },
+    "model": "auth.permission",
+    "pk": 21
+},
+{
+    "fields": {
+        "codename": "add_recordlabel",
+        "name": "Can add record label",
+        "content_type": 8
+    },
+    "model": "auth.permission",
+    "pk": 22
+},
+{
+    "fields": {
+        "codename": "change_recordlabel",
+        "name": "Can change record label",
+        "content_type": 8
+    },
+    "model": "auth.permission",
+    "pk": 23
+},
+{
+    "fields": {
+        "codename": "delete_recordlabel",
+        "name": "Can delete record label",
+        "content_type": 8
+    },
+    "model": "auth.permission",
+    "pk": 24
+},
+{
+    "fields": {
+        "codename": "add_artist",
+        "name": "Can add artist",
+        "content_type": 9
+    },
+    "model": "auth.permission",
+    "pk": 25
+},
+{
+    "fields": {
+        "codename": "change_artist",
+        "name": "Can change artist",
+        "content_type": 9
+    },
+    "model": "auth.permission",
+    "pk": 26
+},
+{
+    "fields": {
+        "codename": "delete_artist",
+        "name": "Can delete artist",
+        "content_type": 9
+    },
+    "model": "auth.permission",
+    "pk": 27
+},
+{
+    "fields": {
+        "codename": "add_album",
+        "name": "Can add album",
+        "content_type": 10
+    },
+    "model": "auth.permission",
+    "pk": 28
+},
+{
+    "fields": {
+        "codename": "change_album",
+        "name": "Can change album",
+        "content_type": 10
+    },
+    "model": "auth.permission",
+    "pk": 29
+},
+{
+    "fields": {
+        "codename": "delete_album",
+        "name": "Can delete album",
+        "content_type": 10
+    },
+    "model": "auth.permission",
+    "pk": 30
+},
+{
+    "fields": {
+        "codename": "add_pressing",
+        "name": "Can add pressing",
+        "content_type": 11
+    },
+    "model": "auth.permission",
+    "pk": 31
+},
+{
+    "fields": {
+        "codename": "change_pressing",
+        "name": "Can change pressing",
+        "content_type": 11
+    },
+    "model": "auth.permission",
+    "pk": 32
+},
+{
+    "fields": {
+        "codename": "delete_pressing",
+        "name": "Can delete pressing",
+        "content_type": 11
+    },
+    "model": "auth.permission",
+    "pk": 33
+},
+{
+    "fields": {
+        "codename": "add_user",
+        "name": "Can add user",
+        "content_type": 12
+    },
+    "model": "auth.permission",
+    "pk": 34
+},
+{
+    "fields": {
+        "codename": "change_user",
+        "name": "Can change user",
+        "content_type": 12
+    },
+    "model": "auth.permission",
+    "pk": 35
+},
+{
+    "fields": {
+        "codename": "delete_user",
+        "name": "Can delete user",
+        "content_type": 12
+    },
+    "model": "auth.permission",
+    "pk": 36
+},
+{
+    "fields": {
+        "codename": "add_ownedrecord",
+        "name": "Can add owned record",
+        "content_type": 13
+    },
+    "model": "auth.permission",
+    "pk": 37
+},
+{
+    "fields": {
+        "codename": "change_ownedrecord",
+        "name": "Can change owned record",
+        "content_type": 13
+    },
+    "model": "auth.permission",
+    "pk": 38
+},
+{
+    "fields": {
+        "codename": "delete_ownedrecord",
+        "name": "Can delete owned record",
+        "content_type": 13
+    },
+    "model": "auth.permission",
+    "pk": 39
+},
+{
+    "fields": {
+        "username": "jlagrou2",
+        "first_name": "",
+        "last_name": "",
+        "is_active": true,
+        "is_superuser": true,
+        "is_staff": true,
+        "last_login": "2015-10-28T10:50:00.068Z",
+        "groups": [],
+        "user_permissions": [],
+        "password": "pbkdf2_sha256$20000$XPmZRIiKa84L$tRGHWlKLShStIvgT2h0sXhL9OoVtZFVT9iI5RLs9jEs=",
+        "email": "jlagrou2@illinois.edu",
+        "date_joined": "2015-10-23T16:21:31.417Z"
+    },
+    "model": "auth.user",
+    "pk": 1
+},
+{
+    "fields": {
+        "profile_picture": "",
+        "friends": [],
+        "user": 1
+    },
+    "model": "recordstore.user",
+    "pk": 1
+},
+{
+    "fields": {
+        "action_flag": 1,
+        "action_time": "2015-10-23T17:14:25.482Z",
+        "object_repr": "Run For Cover",
+        "object_id": "1",
+        "change_message": "",
+        "user": 1,
+        "content_type": 8
+    },
+    "model": "admin.logentry",
+    "pk": 1
+},
+{
+    "fields": {
+        "action_flag": 1,
+        "action_time": "2015-10-23T17:14:32.685Z",
+        "object_repr": "EMI",
+        "object_id": "2",
+        "change_message": "",
+        "user": 1,
+        "content_type": 8
+    },
+    "model": "admin.logentry",
+    "pk": 2
+},
+{
+    "fields": {
+        "action_flag": 1,
+        "action_time": "2015-10-23T17:14:41.567Z",
+        "object_repr": "Sony BMG",
+        "object_id": "3",
+        "change_message": "",
+        "user": 1,
+        "content_type": 8
+    },
+    "model": "admin.logentry",
+    "pk": 3
+},
+{
+    "fields": {
+        "action_flag": 1,
+        "action_time": "2015-10-23T17:14:51.973Z",
+        "object_repr": "No Sleep Records",
+        "object_id": "4",
+        "change_message": "",
+        "user": 1,
+        "content_type": 8
+    },
+    "model": "admin.logentry",
+    "pk": 4
+},
+{
+    "fields": {
+        "action_flag": 1,
+        "action_time": "2015-10-23T17:14:58.130Z",
+        "object_repr": "Deathwish",
+        "object_id": "5",
+        "change_message": "",
+        "user": 1,
+        "content_type": 8
+    },
+    "model": "admin.logentry",
+    "pk": 5
+},
+{
+    "fields": {
+        "action_flag": 1,
+        "action_time": "2015-10-23T17:15:12.904Z",
+        "object_repr": "Skeletal Lightening ",
+        "object_id": "6",
+        "change_message": "",
+        "user": 1,
+        "content_type": 8
+    },
+    "model": "admin.logentry",
+    "pk": 6
+},
+{
+    "fields": {
+        "action_flag": 1,
+        "action_time": "2015-10-23T17:16:18.839Z",
+        "object_repr": "Cloakroom",
+        "object_id": "1",
+        "change_message": "",
+        "user": 1,
+        "content_type": 9
+    },
+    "model": "admin.logentry",
+    "pk": 7
+},
+{
+    "fields": {
+        "action_flag": 1,
+        "action_time": "2015-10-23T17:16:49.455Z",
+        "object_repr": "unknown",
+        "object_id": "unknown",
+        "change_message": "",
+        "user": 1,
+        "content_type": 7
+    },
+    "model": "admin.logentry",
+    "pk": 8
+},
+{
+    "fields": {
+        "action_flag": 1,
+        "action_time": "2015-10-23T17:17:42.595Z",
+        "object_repr": "Further Out",
+        "object_id": "1",
+        "change_message": "",
+        "user": 1,
+        "content_type": 10
+    },
+    "model": "admin.logentry",
+    "pk": 9
+},
+{
+    "fields": {
+        "action_flag": 2,
+        "action_time": "2015-10-23T17:18:00.875Z",
+        "object_repr": "Further Out",
+        "object_id": "1",
+        "change_message": "Added pressing \"Further Out : CD\".",
+        "user": 1,
+        "content_type": 10
+    },
+    "model": "admin.logentry",
+    "pk": 10
+},
+{
+    "fields": {
+        "action_flag": 3,
+        "action_time": "2015-10-23T19:02:10.717Z",
+        "object_repr": "Run Forever",
+        "object_id": "2",
+        "change_message": "",
+        "user": 1,
+        "content_type": 9
+    },
+    "model": "admin.logentry",
+    "pk": 11
+},
+{
+    "fields": {
+        "action_flag": 3,
+        "action_time": "2015-10-23T19:13:59.472Z",
+        "object_repr": "The Devil, and Death, and Me",
+        "object_id": "2",
+        "change_message": "",
+        "user": 1,
+        "content_type": 10
+    },
+    "model": "admin.logentry",
+    "pk": 12
+},
+{
+    "fields": {
+        "action_flag": 2,
+        "action_time": "2015-10-23T19:32:12.920Z",
+        "object_repr": "The Devil, and Death, and Me",
+        "object_id": "3",
+        "change_message": "Deleted pressing \"The Devil, and Death, and Me : Vinyl - 12 inch\".",
+        "user": 1,
+        "content_type": 10
+    },
+    "model": "admin.logentry",
+    "pk": 13
+},
+{
+    "fields": {
+        "action_flag": 3,
+        "action_time": "2015-10-26T18:31:13.873Z",
+        "object_repr": "Infinity",
+        "object_id": "6",
+        "change_message": "",
+        "user": 1,
+        "content_type": 10
+    },
+    "model": "admin.logentry",
+    "pk": 14
+},
+{
+    "fields": {
+        "action_flag": 3,
+        "action_time": "2015-10-26T18:31:14.011Z",
+        "object_repr": "Infinity",
+        "object_id": "5",
+        "change_message": "",
+        "user": 1,
+        "content_type": 10
+    },
+    "model": "admin.logentry",
+    "pk": 15
+},
+{
+    "fields": {
+        "action_flag": 3,
+        "action_time": "2015-10-26T18:31:14.081Z",
+        "object_repr": "infinity",
+        "object_id": "4",
+        "change_message": "",
+        "user": 1,
+        "content_type": 10
+    },
+    "model": "admin.logentry",
+    "pk": 16
+},
+{
+    "fields": {
+        "action_flag": 1,
+        "action_time": "2015-10-26T18:57:14.850Z",
+        "object_repr": "jlagrou2",
+        "object_id": "1",
+        "change_message": "",
+        "user": 1,
+        "content_type": 12
+    },
+    "model": "admin.logentry",
+    "pk": 17
+},
+{
+    "fields": {
+        "action_flag": 2,
+        "action_time": "2015-10-26T19:45:55.334Z",
+        "object_repr": "jlagrou2",
+        "object_id": "1",
+        "change_message": "Added owned record \"Further Out : Vinyl - 12 inch\".",
+        "user": 1,
+        "content_type": 12
+    },
+    "model": "admin.logentry",
+    "pk": 18
+},
+{
+    "fields": {
+        "action_flag": 2,
+        "action_time": "2015-10-26T19:46:14.299Z",
+        "object_repr": "jlagrou2",
+        "object_id": "1",
+        "change_message": "Added owned record \"Further Out : CD\".",
+        "user": 1,
+        "content_type": 12
+    },
+    "model": "admin.logentry",
+    "pk": 19
+}
+]

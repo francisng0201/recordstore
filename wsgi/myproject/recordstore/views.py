@@ -49,7 +49,6 @@ def authenticate_view(request):
     else:
         return redirect(next_url)
 
-
 #
 # Views for modifying/looking at a personal record collection
 #
@@ -69,11 +68,18 @@ def view_profile(request):
 
 @login_required
 def add_to_collection(request):
+    if request.method != 'POST':
+        response = {}
+        response['message'] = 'Not a POST request'
+        response['success'] = False
+        return JsonResponse(response)
+
     user = User.objects.get(pk=request.user.id)
     album_id = request.POST.get('album_id', None)
     pressing_id = request.POST.get('pressing_id', None)
 
     if album_id == None:
+        response = {}
         response['message'] = 'album_id cannot be null'
         response['success'] = False
         return JsonResponse(response)
