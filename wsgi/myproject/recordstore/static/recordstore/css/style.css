@@ -1,11 +1,59 @@
-.main-container {
-    width: 80%;
-    margin: 50px auto 150px;
+.topbar {
+    box-sizing: border-box;
+    height: 50px;
+    top: 0;
+    left: 0;
+    right: 0;
+    padding: 0 1%;
+    position: fixed;
+    z-index: 1;
 }
 
-h1 {
-    color: green;
-    display: block;
-    text-decoration: underline;
-    width: 100%;
+.content {
+    background-color: white;
+    box-sizing: border-box;
+    margin: 125px auto 0;
+    padding: 50px 2.5% 200px;
+    width: 70%;
+}
+
+.main-container {
+    position: fixed;
+    top: 50px;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background-color: blue;
+}
+
+.parallax {
+    perspective: 1px;
+    transform-style: preserve-3d;
+    height: 100vh;
+    overflow-x: hidden;
+    overflow-y: auto;
+}
+
+.parallax-layer {
+    position: absolute;
+    top: 0;
+    right: 0;
+    bottom: 0;
+    left: 0;
+    transform-style: inherit;
+    z-index: -1;
+}
+
+.parallax-base {
+    transform: translateZ(-1px) scale(2);
+}
+
+.parallax-main {
+    transform: translateZ(0);
+}
+
+.background {
+    background-image: url('/static/recordstore/blue_background.jpg');
+    background-size: cover;
+    background-attachment: fixed;
 }
