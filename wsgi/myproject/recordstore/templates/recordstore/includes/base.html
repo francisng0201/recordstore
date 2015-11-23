@@ -19,27 +19,22 @@
     {% endblock %}
 </head>
 <body>
+
     <div class='topbar'>
-        <p>
-            <a href='{% url "recordstore:home" %}'>home</a>
+        <a href='{% url "recordstore:home" %}'>home</a>
 
-            {% if not user.is_authenticated %}
-                <a href='{% url "recordstore:login" %}'>login</a>
-            {% else %}
-                <a href='{% url "recordstore:logout" %}'>log out</a>
-            {% endif %}
-        </p>
+        {% if not user.is_authenticated %}
+            <a href='{% url "recordstore:login" %}'>login</a>
+        {% else %}
+            <a href='{% url "recordstore:logout" %}'>log out</a>
+        {% endif %}
     </div>
-    <div class='parallax'>
-        <div class="parallax-layer parallax-base background"></div>
+    
+    <div class="content">
+        <h2>Recordstore</h3>
+        {% block body %}
+        {% endblock %}
+    </div>
 
-        <div class="parallax-layer parallax-main">
-            <div class="content">
-                <h2>Recordstore</h3>
-                {% block body %}
-                {% endblock %}
-            </div>
-        </div>
-    </div>
 </body>
 </html>

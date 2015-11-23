@@ -15,7 +15,7 @@ def home(request):
     return render(request, 'recordstore/index.html', {});
 
 # 
-# logging in and out views
+# logging in and out
 #
 
 def login_view(request):
@@ -50,7 +50,7 @@ def authenticate_view(request):
         return redirect(next_url)
 
 #
-# Views for modifying/looking at a personal record collection
+# modifying/looking at a personal record collection
 #
 
 @login_required
@@ -105,7 +105,7 @@ def add_to_collection(request):
 
 
 #
-# Album-centric views
+# Albums
 #
 
 def all_records(request):
@@ -149,7 +149,7 @@ def process_album(request):
     return redirect(reverse('recordstore:all_records', args=[]))
 
 #
-# Pressing-centric views
+# Pressings
 #
 
 class PressingDetailView(DetailView):
@@ -169,7 +169,7 @@ def process_pressing(request):
     return redirect(reverse('recordstore:all_records', args=[]))
 
 #
-# Artist-centric views
+# Artists
 #
 
 class ArtistListView(ListView):
