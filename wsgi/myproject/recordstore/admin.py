@@ -28,6 +28,6 @@ class OwnedRecordInline(admin.StackedInline):
     model = OwnedRecord
     extra = 1
 
-@admin.register(User)
+@admin.register(RecordStoreUser)
 class UserAdmin(admin.ModelAdmin):
     inlines = [OwnedRecordInline,]

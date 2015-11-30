@@ -60,7 +60,7 @@ def view_collection(request):
 
 @login_required
 def view_profile(request):
-    recordstore_user = User.objects.get(pk=request.user.id)
+    recordstore_user = get_object_or_404(RecordStoreUser, django_user_id=request.user.id)
     context = {
         'rc_user' : recordstore_user,
         'records' : recordstore_user.ownedrecord_set.all(),
@@ -69,7 +69,7 @@ def view_profile(request):
 
 @login_required
 def add_to_collection(request):
-    user = User.objects.get(pk=request.user.id)
+    user = RecordStoreUser.objects.get(pk=request.user.id)
     album_id = request.POST.get('album_id', None)
     pressing_id = request.POST.get('pressing_id', None)
 

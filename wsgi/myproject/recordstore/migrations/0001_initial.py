@@ -1,7 +1,7 @@
 # -*- coding: utf-8 -*-
 from __future__ import unicode_literals
 
-from django.db import models, migrations
+from django.db import migrations, models
 from django.conf import settings
 
 
@@ -19,7 +19,7 @@ class Migration(migrations.Migration):
                 ('name', models.CharField(max_length=255)),
                 ('num_songs', models.IntegerField(default=0)),
                 ('release_date', models.DateField(null=True, verbose_name=b'Release Date', blank=True)),
-                ('rating', models.IntegerField(default=0, choices=[(0, b'0 Stars'), (1, b'1 Star'), (2, b'2 Stars'), (3, b'3 Stars'), (4, b'4 Stars'), (4, b'5 Stars')])),
+                ('rating', models.IntegerField(default=0, choices=[(0, b'0 Stars'), (1, b'1 Star'), (2, b'2 Stars'), (3, b'3 Stars'), (4, b'4 Stars'), (5, b'5 Stars')])),
             ],
         ),
         migrations.CreateModel(
@@ -40,12 +40,19 @@ class Migration(migrations.Migration):
             ],
         ),
         migrations.CreateModel(
+            name='OwnedRecord',
+            fields=[
+                ('id', models.AutoField(verbose_name='ID', serialize=False, auto_created=True, primary_key=True)),
+                ('album', models.ForeignKey(to='recordstore.Album')),
+            ],
+        ),
+        migrations.CreateModel(
             name='Pressing',
             fields=[
                 ('id', models.AutoField(verbose_name='ID', serialize=False, auto_created=True, primary_key=True)),
                 ('artwork', models.ImageField(null=True, upload_to=b'', blank=True)),
                 ('version_number', models.IntegerField(default=1)),
-                ('release_format', models.CharField(default=b'', max_length=255, choices=[(b'', b'Unknown'), (b'cd', b'CD'), (b'vinyl_12', b'Vinyl 12 inch'), (b'vinyl_7', b'Vinyl 7 inch'), (b'tape', b'Tape')])),
+                ('release_format', models.CharField(default=b'', max_length=255, choices=[(b'', b'Unknown'), (b'cd', b'CD'), (b'vinyl_12', b'Vinyl - 12 inch'), (b'vinyl_2_12', b'Vinyl - Double LP 12 inch'), (b'vinyl_10', b'Vinyl - 10 inch'), (b'vinyl_7', b'Vinyl - 7 inch'), (b'tape', b'Tape')])),
                 ('album', models.ForeignKey(to='recordstore.Album')),
             ],
         ),
@@ -58,19 +65,28 @@ class Migration(migrations.Migration):
             ],
         ),
         migrations.CreateModel(
-            name='User',
+            name='RecordStoreUser',
             fields=[
                 ('id', models.AutoField(verbose_name='ID', serialize=False, auto_created=True, primary_key=True)),
                 ('profile_picture', models.ImageField(null=True, upload_to=b'', blank=True)),
-                ('friends', models.ManyToManyField(related_name='friends_rel_+', to='recordstore.User', blank=True)),
-                ('owned_records', models.ManyToManyField(to='recordstore.Pressing', blank=True)),
-                ('user', models.OneToOneField(to=settings.AUTH_USER_MODEL)),
+                ('django_user', models.OneToOneField(to=settings.AUTH_USER_MODEL)),
+                ('friends', models.ForeignKey(blank=True, to='recordstore.RecordStoreUser', null=True)),
             ],
         ),
         migrations.AddField(
             model_name='pressing',
             name='label',
             field=models.ForeignKey(to='recordstore.RecordLabel'),
+        ),
+        migrations.AddField(
+            model_name='ownedrecord',
+            name='owner',
+            field=models.ForeignKey(to='recordstore.RecordStoreUser'),
+        ),
+        migrations.AddField(
+            model_name='ownedrecord',
+            name='pressing',
+            field=models.ForeignKey(blank=True, to='recordstore.Pressing', null=True),
         ),
         migrations.AddField(
             model_name='album',
@@ -81,5 +97,9 @@ class Migration(migrations.Migration):
             model_name='album',
             name='genre',
             field=models.ForeignKey(to='recordstore.Genre'),
+        ),
+        migrations.AlterUniqueTogether(
+            name='ownedrecord',
+            unique_together=set([('album', 'pressing')]),
         ),
     ]

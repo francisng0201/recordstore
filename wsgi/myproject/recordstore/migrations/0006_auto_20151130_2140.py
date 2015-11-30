@@ -7,13 +7,14 @@ from django.db import migrations, models
 class Migration(migrations.Migration):
 
     dependencies = [
-        ('recordstore', '0006_auto_20151130_2040'),
+        ('recordstore', '0005_auto_20151130_2129'),
     ]
 
     operations = [
         migrations.AlterField(
-            model_name='user',
+            model_name='recordstoreuser',
             name='friends',
-            field=models.ForeignKey(blank=True, to='recordstore.User', null=True),
+            field=models.ForeignKey(default=None, to='recordstore.RecordStoreUser'),
+            preserve_default=False,
         ),
     ]

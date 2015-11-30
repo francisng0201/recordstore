@@ -77,21 +77,16 @@ class Pressing(models.Model):
     def __unicode__(self):
         return "{} : {}".format(self.album, self.get_release_format_display())
 
-class User(models.Model):
-    django_user = models.OneToOneField(ModelUser)
-
+class RecordStoreUser(models.Model):
+    django_user = models.OneToOneField(ModelUser, null=True)
     profile_picture = models.ImageField(null=True, blank=True)
-
-    # friends = models.ForeignKey('self', blank=True, null=True)
-
-    def __unicode__(self):
-        return self.user.__unicode__()
+    # friends = models.ForeignKey('self')
 
     def __unicode__(self):
-        return '{}'.format(self.user)
+        return '{}'.format(self.django_user)
 
 class OwnedRecord(models.Model):
-    owner = models.ForeignKey(User)
+    owner = models.ForeignKey(RecordStoreUser)
     
     album = models.ForeignKey(Album)
     pressing = models.ForeignKey(Pressing, blank=True, null=True)

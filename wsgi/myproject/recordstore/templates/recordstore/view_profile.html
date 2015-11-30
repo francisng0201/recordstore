@@ -11,13 +11,13 @@
                 </div>
                 <ul class="list-group">
                     <li class="list-group-item">
-                        Name: {{ rc_user.user.first_name }} {{ rc_user.user.last_name }}
+                        Name: {{ rc_user.django_user.first_name }} {{ rc_user.django_user.last_name }}
                     </li>
                     <li class="list-group-item">
                         Username: {{ rc_user }}
                     </li>
                     <li class="list-group-item">
-                        Joined: {{ rc_user.user.date_joined|timesince }}
+                        Joined: {{ rc_user.django_user.date_joined|timesince }}
                     </li>
                 </ul>
                 <div class='panel-footer'>
@@ -65,7 +65,10 @@
                             </div>
                         </li>
                     {% empty %}
-                        <li class='list-group-item'>You don't own any records...</li>
+                        <li class='list-group-item'>
+                            You don't own any records...
+                            <a href='{% url "recordstore:all_records" %}'> Try adding some &rarr;</a>
+                        </li>
                     {% endfor %}
                 </ul>
             </div>

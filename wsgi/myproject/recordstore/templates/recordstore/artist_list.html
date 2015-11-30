@@ -1,22 +1,33 @@
 {% extends 'recordstore/includes/base.html' %}
 
 {% block body %}
-    <ul class='list-group'>
-        {% for artist in object_list %}
-            <li class='list-group-item'>
-                <a href='{% url "recordstore:artist_detail" artist.id %}'>
-                    {{ artist }}
-                </a>
-            </li>
-        {% empty %}
-            <li class='list-group-item'>
-                We know nothing about anything
-            </li>
-        {% endfor %}
-    </ul>
+    <div class="col-sm-6">
+        <div class="panel panel-default">
+            <div class="panel-heading">
+                <h3 class="panel-title">Arists</h3>
+            </div>
+            <ul class='list-group'>
+                {% for artist in object_list %}
+                    <li class='list-group-item'>
+                        <a href='{% url "recordstore:artist_detail" artist.id %}'>
+                            {{ artist }}
+                        </a>
+                    </li>
+                {% empty %}
+                    <li class='list-group-item'>
+                        We know nothing about anything
+                    </li>
+                {% endfor %}
+            </ul>
+        </div>
+    </div>
 
-    <p>
-        Don't see the artist you're looking for here? Try 
-        <a href='{% url "recordstore:create_artist" %}'>creating a new one</a>.
-    </p>
+    <div class="col-sm-6">
+        <div class="well well-lg">
+            <p>
+                Don't see the artist you're looking for here? Try <a href='{% url
+                "recordstore:create_artist" %}'>creating a new one</a>.
+            </p>
+        </div>
+    </div>
 {% endblock %}

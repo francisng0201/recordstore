@@ -7,12 +7,13 @@ from django.db import migrations, models
 class Migration(migrations.Migration):
 
     dependencies = [
-        ('recordstore', '0007_auto_20151130_2040'),
+        ('recordstore', '0002_remove_recordstoreuser_friends'),
     ]
 
     operations = [
-        migrations.RemoveField(
-            model_name='user',
+        migrations.AddField(
+            model_name='recordstoreuser',
             name='friends',
+            field=models.ForeignKey(blank=True, to='recordstore.RecordStoreUser', null=True),
         ),
     ]
