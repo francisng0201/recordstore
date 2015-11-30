@@ -15,7 +15,7 @@ class CollectionTest(TestCase):
         success = self.client.login(username='jlagrou2', password='RunCat941')
         self.assertTrue(success)
 
-    dexf test_add_to_collection(self):
+    def test_add_to_collection(self):
         album = Album.objects.get(pk=1)
         pressing = album.pressing_set.all()[0]
         post_data = {

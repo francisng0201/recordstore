@@ -2,6 +2,7 @@ from django.contrib.auth.forms import AuthenticationForm
 from django.contrib.auth import authenticate, login, logout
 from django.contrib.auth.decorators import login_required
 from django.core.urlresolvers import reverse
+from django.views.defaults import bad_request 
 from django.http import HttpResponseRedirect as redirect
 from django.http import JsonResponse
 from django.shortcuts import render, get_object_or_404
@@ -68,40 +69,28 @@ def view_profile(request):
 
 @login_required
 def add_to_collection(request):
-    if request.method != 'POST':
-        response = {}
-        response['message'] = 'Not a POST request'
-        response['success'] = False
-        return JsonResponse(response)
-
     user = User.objects.get(pk=request.user.id)
     album_id = request.POST.get('album_id', None)
     pressing_id = request.POST.get('pressing_id', None)
 
-    if album_id == None:
-        response = {}
-        response['message'] = 'album_id cannot be null'
-        response['success'] = False
-        return JsonResponse(response)
+    if album_id == None or pressing_id == None:
+        return bad_request(request)
 
     record = {
-        'owner_id' : user.id,
-        'album_id' : album_id,
-        'pressing_id' : pressing_id,
+        'owner' : user.id,
+        'album' : album_id,
+        'pressing' : pressing_id,
     }
+    form = OwnedRecordForm(record)
+    form.save()
 
-    response = {}
-    try:
-        form = OwnedRecordForm(record)
-        form.save()
-    except ValidationError:
-        response['message'] = 'Failed To Validate'
-        response['success'] = False
-    else:
-        response['messsage'] = 'Success'
-        response['success'] = True
+    return redirect(reverse('recordstore:view_profile', args=[]))
 
-    return JsonResponse(response)
+@login_required
+def delete_collection(request):
+    record_id = request.POST.get('id', None)
+    OwnedRecord.objects.get(pk=record_id).delete()
+    return redirect(reverse('recordstore:view_profile', args=[]))
 
 
 #

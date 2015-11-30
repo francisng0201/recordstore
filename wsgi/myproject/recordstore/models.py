@@ -78,11 +78,11 @@ class Pressing(models.Model):
         return "{} : {}".format(self.album, self.get_release_format_display())
 
 class User(models.Model):
-    user = models.OneToOneField(ModelUser)
+    django_user = models.OneToOneField(ModelUser)
 
     profile_picture = models.ImageField(null=True, blank=True)
 
-    friends = models.ManyToManyField('self', blank=True)
+    # friends = models.ForeignKey('self', blank=True, null=True)
 
     def __unicode__(self):
         return self.user.__unicode__()

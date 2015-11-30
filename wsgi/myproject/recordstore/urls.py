@@ -4,6 +4,7 @@ from . import views
 
 urlpatterns = [
     url(r'^$', views.home, name='home'),
+
     # urls for loging in users
     url(r'^login', views.login_view, name='login'),
     url(r'^logout', views.logout_view, name='logout'),
@@ -31,6 +32,7 @@ urlpatterns = [
     # modify/view personal user information
     url(r'^collection/view', views.view_collection, name='view_collection'),
     url(r'^collection/add', views.add_to_collection, name='add_to_collection'),
+    url(r'^collection/delete', views.delete_collection, name='delete_collection'),
     url(r'^profile/view', views.view_profile, name='view_profile'),
 
     # create and process new record labels

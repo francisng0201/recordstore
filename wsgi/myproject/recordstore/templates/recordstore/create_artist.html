@@ -1,9 +1,11 @@
 {% extends 'recordstore/includes/base.html' %}
 
+{% block title %} Create Artist - {% endblock %}
+
 {% block body %}
     <form action='{% url "recordstore:process_artist" %}'method="POST">
         {% csrf_token %}
         {{ artist_form.as_p }}
-        <button type='submit'>Submit</button>
+        <button class='btn btn-primary' type='submit'>Create</button>
     </form>
 {% endblock %}

@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <title>Recordstore</title>
+    <title>{% block title %}{% endblock %}Recordstore</title>
 
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -22,17 +22,22 @@
 
     <div class='topbar'>
         <a href='{% url "recordstore:home" %}'>home</a>
-
         {% if not user.is_authenticated %}
             <a href='{% url "recordstore:login" %}'>login</a>
         {% else %}
+            <a href='{% url "recordstore:view_profile" %}'>view profile</a>
             <a href='{% url "recordstore:logout" %}'>log out</a>
         {% endif %}
     </div>
     
-    <div class="content">
-        <h2>Recordstore</h3>
+    <div class="content container">
+        <div class='row'>
+            <div class='col-xs-12'>
+                <h3>{% block header %}Recordstore{% endblock %}</h3>
+            </div>
+        </div>
         {% block body %}
+
         {% endblock %}
     </div>
 

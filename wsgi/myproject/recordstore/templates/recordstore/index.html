@@ -1,17 +1,20 @@
 {% extends 'recordstore/includes/base.html' %}
 
 {% block body %}
-    <ul>
-        <li>
-            <a href='{% url "recordstore:all_records" %}'>
-                Look at all the albums we know about
-            </a>
-        </li>
-
-        <li>
-            <a href='{% url "recordstore:all_artists" %}'>
-                Look at all the artists we know about
-            </a>
-        </li>
-    </ul>
+    <div class='row'>
+        <div class="col-xs-6">
+            <ul class='list-group'>
+                <li class='list-group-item'>
+                    <a href='{% url "recordstore:all_records" %}'>
+                        Look at all the albums we know about
+                    </a>
+                </li>
+                <li class='list-group-item'>
+                    <a href='{% url "recordstore:all_artists" %}'>
+                        Look at all the artists we know about
+                    </a>
+                </li>
+            </ul>
+        </div>
+    </div>
 {% endblock %}

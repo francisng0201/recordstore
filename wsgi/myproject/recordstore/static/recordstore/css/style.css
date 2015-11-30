@@ -1,22 +1,32 @@
 .topbar {
+    border-bottom: 1px solid #ccc;
     box-sizing: border-box;
-    height: 30px;
+    box-shadow: 2px 2px 8px 1px #ddd;
+    height: 50px;
     top: 0;
     left: 0;
     right: 0;
-    padding: 0 1%;
+    padding: 0 2%;
     position: fixed;
     z-index: 1;
 }
 
 .topbar a {
-    line-height: 30px;
+    display: inline-block;
+    height: 49px;
+    line-height: 49px;
+    padding: 0 15px;
+    transition: all 0.3s;
+}
+.topbar a:hover {
+    text-decoration: none;
+    background-color: #eee;
 }
 
 .content {
     background-color: white;
     box-sizing: border-box;
-    margin: 30px auto 0;
+    margin: 50px auto 0;
     padding: 25px 2.5% 200px;
     width: 70%;
 }

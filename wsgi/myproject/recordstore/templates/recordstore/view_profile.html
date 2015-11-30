@@ -1,19 +1,74 @@
 {% extends 'recordstore/includes/base.html' %}
 
+{% block title %} Profile - {% endblock%}
+
 {% block body %}
-    <h3>{{ rc_user }}</h3>
+    <div class='row'>
+        <div class='col-xs-6'>
+            <div class="panel panel-default">
+                <div class="panel-heading">
+                    <h3 class="panel-title">Profile Info</h3>
+                </div>
+                <ul class="list-group">
+                    <li class="list-group-item">
+                        Name: {{ rc_user.user.first_name }} {{ rc_user.user.last_name }}
+                    </li>
+                    <li class="list-group-item">
+                        Username: {{ rc_user }}
+                    </li>
+                    <li class="list-group-item">
+                        Joined: {{ rc_user.user.date_joined|timesince }}
+                    </li>
+                </ul>
+                <div class='panel-footer'>
+                    <a url=''>Edit</a>
+                </div>
+            </div>
 
-    <h4>Collection</h4>
-    <ul>
-    {% for record in records %}
-        <li>
-            <a href='{% url "recordstore:album_detail" record.album.id %}'>
-            {{ record }}
-            </a>
-        </li>
-    {% empty %}
-        <li>You don't own any records...</li>
-    {% endfor %}
-    </ul>
+            <div class='panel panel-default'>
+                <div class="panel-heading">
+                    <h3 class="panel-title">Your Friends</h3>
+                </div>
+                <ul class="list-group">
+                    {% for friend in rc_user.friends %}
+                        <li class="list-group-item">
+                            {{ friend }}
+                        </li>
+                    {% empty %}
+                        <li class="list-group-item">
+                            You have no friends...
+                        </li>
+                    {% endfor %}
+                </ul>
+            </div>
+        </div>
 
+        <div class="col-xs-6">
+            <div class='panel panel-default'>
+                <div class='panel-heading'>
+                    <h3 class='panel-title'>Your Collection</h3>
+                </div>
+                <ul class='list-group'>
+                    {% for record in records %}
+                        <li class='list-group-item'>
+                            <div>
+                                <p>
+                                    <a href='{% url "recordstore:album_detail" record.album.id %}'>
+                                        {{ record }} &rarr;
+                                    </a>
+                                </p>
+                                <form action='{% url "recordstore:delete_collection" %}' method='POST'>
+                                    {% csrf_token %}
+                                    <input type='hidden' name='id' value='{{ record.id }}'/>
+                                    <button class='btn btn-default' type='submit'>Remove</button>
+                                </form>
+                            </div>
+                        </li>
+                    {% empty %}
+                        <li class='list-group-item'>You don't own any records...</li>
+                    {% endfor %}
+                </ul>
+            </div>
+        </div>
+    </div>
 {% endblock %}
