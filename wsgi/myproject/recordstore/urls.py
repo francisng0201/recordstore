@@ -10,6 +10,10 @@ urlpatterns = [
     url(r'^logout', views.logout_view, name='logout'),
     url(r'^authenticate', views.authenticate_view, name='authenticate'),
 
+    # urls creating users
+    url(r'^join_user', views.join_user, name='join_user'),
+    url(r'^create_user', views.create_user, name='create_user'),
+
     # look at/modify albums in the database
     url(r'^records/view\+all', views.all_records, name='all_records'),
     url(r'^records/view/(?P<pk>[0-9]+)', views.AlbumDetailView.as_view(), name='album_detail'),

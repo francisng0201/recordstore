@@ -26,6 +26,9 @@ class Artist(models.Model):
     name = models.CharField(max_length=255)
     musicbrainz_id = models.IntegerField(default=0, null=True)
 
+    class Meta:
+        ordering = ['name',]
+
     def __unicode__(self):
         return self.name
 
@@ -34,7 +37,7 @@ class Artist(models.Model):
     
 class Album(models.Model):
     artist = models.ForeignKey(Artist)
-    genre = models.ForeignKey(Genre)
+    genre = models.ForeignKey(Genre, null=True, blank=True)
 
     name = models.CharField(max_length=255)
     num_songs = models.IntegerField(default=0)
@@ -50,6 +53,9 @@ class Album(models.Model):
     )
     rating = models.IntegerField(default=0, choices=RATING_CHOICES)
 
+    class Meta:
+        ordering = ['name']
+
     def __unicode__(self):
         return self.name 
 
@@ -58,7 +64,7 @@ class Album(models.Model):
 
 class Pressing(models.Model):
     album = models.ForeignKey(Album)
-    label = models.ForeignKey(RecordLabel)
+    label = models.ForeignKey(RecordLabel, null=True, blank=True)
 
     artwork = models.ImageField(null=True, blank=True)
     version_number = models.IntegerField(default=1)
@@ -73,6 +79,9 @@ class Pressing(models.Model):
         ('tape', 'Tape'),
     )
     release_format = models.CharField(max_length=255, choices=ALLOWED_FORMATS, default='')
+
+    class Meta:
+        ordering = ['album', 'release_format',]
 
     def __unicode__(self):
         return "{} : {}".format(self.album, self.get_release_format_display())

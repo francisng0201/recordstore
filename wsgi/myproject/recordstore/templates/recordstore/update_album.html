@@ -7,6 +7,6 @@
         <input type='hidden' name='album_id' value='{{ album.id }}' />
         {% csrf_token %}
         {{ album_form.as_p }}
-        <button type='submit'>Submit</button>
+        <button class='btn btn-default' type='submit'>Submit</button>
     </form>
 {% endblock %}

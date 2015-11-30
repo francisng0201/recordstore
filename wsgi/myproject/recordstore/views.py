@@ -50,6 +50,12 @@ def authenticate_view(request):
     else:
         return redirect(next_url)
 
+def join_user(request):
+    return redirect(reverse('recordstore:home', args=[]))
+
+def create_user(request):
+    return redirect(reverse('recordstore:home', args=[]))
+
 #
 # modifying/looking at a personal record collection
 #
@@ -69,7 +75,7 @@ def view_profile(request):
 
 @login_required
 def add_to_collection(request):
-    user = RecordStoreUser.objects.get(pk=request.user.id)
+    user = get_object_or_404(RecordStoreUser, django_user_id=request.user.id)
     album_id = request.POST.get('album_id', None)
     pressing_id = request.POST.get('pressing_id', None)
 

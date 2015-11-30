@@ -1,39 +1,64 @@
 {% extends 'recordstore/includes/base.html' %}
 
 {% block body %}
-    <h3>{{ object }}</h3>
-
-    <h5>Details</h5>
-    <ul>
-        <li>Artist: 
-            <a href='{% url "recordstore:artist_detail" object.artist.id %}'>
-                {{ object.artist }}
-            </a>
-        </li>
-        <li>Release Date: {{ object.release_date }}</li>
-        <li>Number of Songs: {{ object.num_songs }}</li>
-        <li>Rating: {{ object.get_rating_display }}</li>
-    </ul>
-
-    <p><a href='{% url "recordstore:update_album" object.id %}'>Update {{ object }}</a></p>
-
-    <h5>Pressings</h5>
-    <ul>
-        {% for pressing in object.pressing_set.all %}
-            <li>
-                <a href='{% url "recordstore:pressing_detail" pressing.id %}'>
-                    {{ pressing }}
+    <div class="row">
+        <div class="col-xs-12">
+            <h4>{{ object }}</h4>
+        </div>
+    </div>
+    <div class="row">
+        <div class="col-sm-6">
+            <div class="panel panel-default">
+                <div class="panel-heading">
+                    <h3 class="panel-title">Details</h3>
+                </div>
+                <ul class='list-group'>
+                    <li class='list-group-item'>Artist: 
+                        <a href='{% url "recordstore:artist_detail" object.artist.id %}'>
+                            {{ object.artist }}
+                        </a>
+                    </li>
+                    <li class='list-group-item'>Release Date: {{ object.release_date }}</li>
+                    <li class='list-group-item'>Number of Songs: {{ object.num_songs }}</li>
+                    <li class='list-group-item'>Rating: {{ object.get_rating_display }}</li>
+                </ul>
+            </div>
+            
+            <p><a href='{% url "recordstore:update_album" object.id %}'>Update {{ object }}</a></p>
+        </div>
+        
+        <div class="col-sm-6">
+            <div class="panel panel-default">
+                <div class="panel-heading">
+                    <h3 class="panel-title">Pressings</h3>
+                </div>
+                <ul class='list-group'>
+                    {% for pressing in object.pressing_set.all %}
+                        <li class='list-group-item'>
+                            <p>
+                                <a href='{% url "recordstore:pressing_detail" pressing.id %}'>
+                                    {{ pressing }}
+                                </a>
+                            </p>
+                            <form method='POST' action='{% url "recordstore:add_to_collection" %}'>
+                                {% csrf_token %}
+                                <input type='hidden' name='album_id' value='{{ pressing.album.id }}'>
+                                <input type='hidden' name='pressing_id' value='{{ pressing.id }}'>
+                                <button class='btn btn-default' type='submit'>Add To Your Colletion +</button>
+                            </form>
+                        </li>
+                    {% empty %}
+                        <li class='list-group-item'>None</li>
+                    {% endfor %}
+                </ul>
+            </div>
+            
+            <div class="well well-lg">
+                <p>Is there a pressing you think is missing?</p>
+                <a class='btn btn-default' href='{% url "recordstore:create_pressing" %}'>
+                    Create It Here
                 </a>
-            </li>
-        {% empty %}
-            <li>None</li>
-        {% endfor %}
-    </ul>
-
-    <p>
-        Is there a pressing you think is missing? Create it 
-        <a href='{% url "recordstore:create_pressing" %}'>
-            here.
-        </a>
-    </p>
+            </div>
+        </div>
+    </div>
 {% endblock %}

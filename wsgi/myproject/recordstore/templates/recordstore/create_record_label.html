@@ -1,9 +1,16 @@
 {% extends 'recordstore/includes/base.html' %}
 
 {% block body %}
-    <form action='{% url "recordstore:process_record_label" %}'method="POST">
-        {% csrf_token %}
-        {{ record_label_form.as_p }}
-        <button type='submit'>Submit</button>
-    </form>
+    <div class="panel panel-default">
+        <div class="panel-heading">
+            <h3 class="panel-title">Create a new record label</h3>
+        </div>
+        <div class="panel-body">
+            <form action='{% url "recordstore:process_record_label" %}'method="POST">
+                {% csrf_token %}
+                {{ record_label_form.as_p }}
+                <button class='btn btn-default' type='submit'>Submit</button>
+            </form>
+        </div>
+    </div>
 {% endblock %}
