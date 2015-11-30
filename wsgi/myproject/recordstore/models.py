@@ -44,6 +44,7 @@ class Album(models.Model):
     release_date = models.DateField('Release Date', blank=True, null=True)
 
     RATING_CHOICES = (
+        (-1, 'None'),
         (0, '0 Stars'),
         (1, '1 Star'),
         (2, '2 Stars'),
