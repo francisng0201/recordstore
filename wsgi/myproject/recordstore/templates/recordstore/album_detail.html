@@ -55,7 +55,7 @@
             
             <div class="well well-lg">
                 <p>Is there a pressing you think is missing?</p>
-                <a class='btn btn-default' href='{% url "recordstore:create_pressing" %}'>
+                <a class='btn btn-default' href='{% url "recordstore:create_pressing" object.id %}'>
                     Create It Here
                 </a>
             </div>

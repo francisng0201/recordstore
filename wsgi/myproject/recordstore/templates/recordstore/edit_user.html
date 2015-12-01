@@ -6,16 +6,16 @@
         <div class="col-xs-6">
             <div class="panel panel-default">
                 <div class='panel-heading'>
-                    <h3 class="panel-title">Join</h3>
+                    <h3 class="panel-title">Edit user details</h3>
                 </div>
                 <div class="panel-body">
-                    <form action='{% url "recordstore:create_user" %}' method='POST' id='join-form'>
+                    <form action='{% url "recordstore:update_user" %}' method='POST' id='join-form'>
                         {% csrf_token %}
-                        {{ join_form.as_p }}
+                        {{ edit_form.as_p }}
                     </form>
                 </div>
                 <div class="panel-footer">
-                    <button class='btn btn-primary' type='submit' form='join-form'>Join</button>
+                    <button class='btn btn-primary' type='submit' form='join-form'>Submit</button>
                 </div>
             </div>
         </div>

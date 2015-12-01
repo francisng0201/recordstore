@@ -3,18 +3,44 @@
 {% block body %}
     <div class='row'>
         <div class="col-xs-6">
-            <ul class='list-group'>
-                <li class='list-group-item'>
-                    <a href='{% url "recordstore:all_records" %}'>
-                        Look at all the albums we know about
-                    </a>
-                </li>
-                <li class='list-group-item'>
-                    <a href='{% url "recordstore:all_artists" %}'>
-                        Look at all the artists we know about
-                    </a>
-                </li>
-            </ul>
+            <div class="panel panel-default">
+                <div class="panel-heading">
+                    <h3 class='panel-title'>
+                        <a href='{% url "recordstore:all_records" %}'>
+                            All Albums &rarr;
+                        </a>
+                    </h3>
+                </div>
+                <ul class="list-group">
+                    {% for artist in artists %}
+                        <li class='list-group-item'>
+                            <a href='{% url "recordstore:artist_detail" artist.id %}'>
+                                {{ artist }}
+                            </a>
+                        </li>
+                    {% endfor %}
+                </ul>
+            </div>
+        </div>
+        <div class="col-xs-6">
+            <div class="panel panel-default">
+                <div class="panel-heading">
+                    <h3 class='panel-title'>
+                        <a href='{% url "recordstore:all_artists" %}'>
+                            All Artists &rarr;
+                        </a>
+                    </h3>
+                </div>
+                <ul class="list-group">
+                    {% for album in albums %}
+                        <li class='list-group-item'>
+                            <a href='{% url "recordstore:album_detail" album.id %}'>
+                                {{ album }}
+                            </a>
+                        </li>
+                    {% endfor %}
+                </ul>
+            </div>
         </div>
     </div>
 {% endblock %}

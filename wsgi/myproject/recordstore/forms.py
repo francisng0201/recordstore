@@ -1,8 +1,25 @@
+from django import forms
+from django.contrib.admin.widgets import AdminDateWidget
+from django.contrib.auth.forms import UserCreationForm
+from django.contrib.auth.models import User as DjangoUser
 from django.db import models
 from django.forms import ModelForm
+from django.forms.extras.widgets import SelectDateWidget
 
+from datetime import date
 
 from .models import *
+
+class SelectDateCustom(SelectDateWidget):
+
+    def create_select(self, *args, **kwargs):
+        select = super(SelectDateCustom, self).create_select(*args, **kwargs)
+        return '<div class="col-xs-4">' + select + '</div>'
+
+    def render(self, *args, **kwargs):
+        row = super(SelectDateCustom, self).render(*args, **kwargs)
+        return '<div class="row">' + row + '</div>'
+
 
 class ArtistForm(ModelForm):
     
@@ -40,6 +57,10 @@ class AlbumForm(ModelForm):
             'rating',
         ]
 
+        widgets = {
+            'release_date' : SelectDateCustom(years = range(date.today().year, 1900, -1)),
+        }
+
 class PressingForm(ModelForm):
 
     class Meta:
@@ -72,4 +93,22 @@ class OwnedRecordForm(ModelForm):
             'owner',
             'album',
             'pressing'
+        ]
+
+class CreateUserForm(UserCreationForm):
+
+    def save(self):
+        django_user = super(CreateUserForm, self).save()
+        rs_user = RecordStoreUser(django_user=django_user)
+        rs_user.save()
+        return rs_user
+
+class EditUserForm(ModelForm):
+
+    class Meta:
+        model = DjangoUser
+
+        fields = [
+            'first_name',
+            'last_name',
         ]

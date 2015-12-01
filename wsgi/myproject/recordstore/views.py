@@ -13,7 +13,11 @@ from .models import *
 from .forms import *
 
 def home(request):
-    return render(request, 'recordstore/index.html', {});
+    context = {
+        'artists' : Artist.objects.all(),
+        'albums' : Album.objects.all(),
+    }
+    return render(request, 'recordstore/index.html', context);
 
 # 
 # logging in and out
@@ -26,6 +30,7 @@ def login_view(request):
     }
     return render(request, 'recordstore/login.html', context)
 
+@login_required
 def logout_view(request):
     name = request.user.username
     logout(request)
@@ -51,10 +56,27 @@ def authenticate_view(request):
         return redirect(next_url)
 
 def join_user(request):
-    return redirect(reverse('recordstore:home', args=[]))
+    context = {
+        'join_form': CreateUserForm()
+    }
+    return render(request, 'recordstore/join_user.html', context)
 
 def create_user(request):
+    user = CreateUserForm(request.POST).save()
     return redirect(reverse('recordstore:home', args=[]))
+
+@login_required
+def edit_user(request):
+    context = {
+        'edit_form': EditUserForm(instance=request.user),
+    }
+    return render(request, 'recordstore/edit_user.html', context)
+
+@login_required
+def update_user(request):
+    edit_form = EditUserForm(request.POST, instance=request.user).save()
+    return redirect(reverse('recordstore:view_profile', args=[]))
+
 
 #
 # modifying/looking at a personal record collection
@@ -139,9 +161,9 @@ def process_album(request):
     else:
         album_form = AlbumForm(request.POST)
 
-    album_form.save()
+    album = album_form.save()
 
-    return redirect(reverse('recordstore:all_records', args=[]))
+    return redirect(reverse('recordstore:album_detail', args=[album.id]))
 
 #
 # Pressings
@@ -151,17 +173,19 @@ class PressingDetailView(DetailView):
     model = Pressing
 
 @login_required
-def create_pressing(request):
+def create_pressing(request, album_id):
+    album = get_object_or_404(Album, pk=album_id)
     context = {
-        'pressing_form' : PressingForm()
+        'pressing_form' : PressingForm(initial={'album':album_id}),
+        'album' : album,
     }
     return render(request, 'recordstore/create_pressing.html', context)
 
 @login_required
 def process_pressing(request):
     pressing_form = PressingForm(request.POST)
-    pressing_form.save()
-    return redirect(reverse('recordstore:all_records', args=[]))
+    pressing = pressing_form.save()
+    return redirect(reverse('recordstore:album_detail', args=[pressing.album.id]))
 
 #
 # Artists

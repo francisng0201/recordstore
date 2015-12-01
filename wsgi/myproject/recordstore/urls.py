@@ -11,8 +11,10 @@ urlpatterns = [
     url(r'^authenticate', views.authenticate_view, name='authenticate'),
 
     # urls creating users
-    url(r'^join_user', views.join_user, name='join_user'),
-    url(r'^create_user', views.create_user, name='create_user'),
+    url(r'^join', views.join_user, name='join_user'),
+    url(r'^create', views.create_user, name='create_user'),
+    url(r'^edit', views.edit_user, name='edit_user'),
+    url(r'^update', views.update_user, name='update_user'),
 
     # look at/modify albums in the database
     url(r'^records/view\+all', views.all_records, name='all_records'),
@@ -23,7 +25,7 @@ urlpatterns = [
 
     # look at/modify pressings in the database
     url(r'^records/view/pressing/(?P<pk>[0-9]+)', views.PressingDetailView.as_view(), name='pressing_detail'),
-    url(r'^pressings/create', views.create_pressing, name='create_pressing'),
+    url(r'^pressings/create/(?P<album_id>[0-9]+)', views.create_pressing, name='create_pressing'),
     url(r'^pressings/process', views.process_pressing, name='process_pressing'),
 
     # look at information about artists

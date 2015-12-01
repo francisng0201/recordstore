@@ -13,7 +13,7 @@ class Genre(models.Model):
         return self.name
 
 class RecordLabel(models.Model):
-    label_name = models.CharField(max_length=255, blank=True)
+    label_name = models.CharField(max_length=255, blank=True, unique=True)
     label_address = models.CharField(max_length=255, blank=True)
 
     def __unicode__(self):
@@ -52,7 +52,7 @@ class Album(models.Model):
         (4, '4 Stars'),
         (5, '5 Stars'),
     )
-    rating = models.IntegerField(default=0, choices=RATING_CHOICES)
+    rating = models.IntegerField(default=3, choices=RATING_CHOICES)
 
     class Meta:
         ordering = ['name']
