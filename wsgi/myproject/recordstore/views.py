@@ -129,6 +129,27 @@ def all_records(request):
 class AlbumDetailView(DetailView):
     model = Album
 
+    def get_context_data(self, **kwargs):
+        # Call the base implementation first to get a context
+        context = super(AlbumDetailView, self).get_context_data(**kwargs)
+        # Add in a QuerySet of all the books
+        context['album_review_form'] = AlbumReviewForm()
+        return context
+
+@login_required
+def process_review(request):
+    album = request.POST['album'] 
+    author = get_object_or_404(RecordStoreUser, django_user_id=request.user.id)
+    text = request.POST['text']
+    review = {
+        'album': album,
+        'author': author.id,
+        'text': text,
+    }
+    review_form = AlbumReviewForm(review).save()
+    return redirect(reverse('recordstore:album_detail', args=[album]))
+
+
 @login_required
 def create_album(request):
     context = {

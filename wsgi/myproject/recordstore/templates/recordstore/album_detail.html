@@ -6,6 +6,7 @@
             <h4>{{ object }}</h4>
         </div>
     </div>
+
     <div class="row">
         <div class="col-sm-6">
             <div class="panel panel-default">
@@ -59,6 +60,47 @@
                 <a class='btn btn-default' href='{% url "recordstore:create_pressing" object.id %}'>
                     Create It Here
                 </a>
+            </div>
+        </div>
+    </div>
+
+    <div class='row'>
+        <div class="col-xs-12">
+            <div class="panel panel-default">
+                <div class="panel-heading">
+                    <h3 class="panel-title">Reviews for {{ object }}</h3>
+                </div>
+                <ul class='list-group'>
+                    {% for review in album.albumreview_set.all %}
+                        <li class="list-group-item">
+                            <p>
+                                <b>Author:</b> {{ review.author.django_user.get_username }}<br/> 
+                                <b>Time:</b> {{ review.date_written | timesince }}
+                            </p>
+                            <blockquote>
+                                {{ review }}
+                            </blockquote>
+                        </li>
+                    {% empty %}
+                        <li class="list-group-item">
+                            No reviews yet
+                        </li>
+                    {% endfor %}
+
+                    {% if user.is_authenticated %}
+                        <li class='list-group-item'>
+                            <h5>Write a review</h5>
+                            <form action='{% url "recordstore:process_review" %}' method='post'>
+                                {% csrf_token %}
+                                <input type='hidden' name='album' value='{{ album.id }}'>
+                                <p>
+                                    <textarea name='text' placeholder='Write a review...' rows='5' required></textarea>
+                                </p>
+                                <button class="btn btn-default" type="submit">Submit</button>
+                            </form>
+                        </li>
+                    {% endif %}
+                </ul>
             </div>
         </div>
     </div>

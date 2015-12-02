@@ -22,6 +22,7 @@ urlpatterns = [
     url(r'^albums/create', views.create_album, name='create_album'),
     url(r'^albums/update/(?P<pk>[0-9]+)', views.update_album, name='update_album'),
     url(r'^albums/process', views.process_album, name='process_album'),
+    url(r'^albums/review\+process', views.process_review, name='process_review'),
 
     # look at/modify pressings in the database
     url(r'^records/view/pressing/(?P<pk>[0-9]+)', views.PressingDetailView.as_view(), name='pressing_detail'),

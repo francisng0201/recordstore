@@ -112,3 +112,18 @@ class EditUserForm(ModelForm):
             'first_name',
             'last_name',
         ]
+
+class AlbumReviewForm(ModelForm):
+    class Meta:
+        model = AlbumReview
+
+        fields = [
+            'album',
+            'author',
+            'text',
+        ]
+
+        widgets = {
+            'album' : forms.HiddenInput(),
+            'author' : forms.HiddenInput(),
+        }

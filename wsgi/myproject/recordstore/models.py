@@ -15,6 +15,7 @@ class Genre(models.Model):
 class RecordLabel(models.Model):
     label_name = models.CharField(max_length=255, blank=True, unique=True)
     label_address = models.CharField(max_length=255, blank=True)
+    musicbrainz_id = models.CharField(max_length=255, blank=True)
 
     def __unicode__(self):
         return self.label_name
@@ -88,7 +89,7 @@ class Pressing(models.Model):
         ordering = ['album', 'release_format',]
 
     def __unicode__(self):
-        return "{} : {}".format(self.album, self.get_release_format_display())
+        return "{} : {} : {}".format(self.album.artist, self.album, self.get_release_format_display())
 
 class RecordStoreUser(models.Model):
     django_user = models.OneToOneField(ModelUser, null=True)
@@ -122,3 +123,16 @@ class OwnedRecord(models.Model):
                 super(OwnedRecord, self).save(*args, **kwargs)
             else:
                 raise ValidationError('Pressing must be in this album\'s pressing set')
+
+class AlbumReview(models.Model):
+    album = models.ForeignKey(Album)
+    author = models.ForeignKey(RecordStoreUser)
+    text = models.CharField(max_length=500)
+
+    date_written = models.DateTimeField(auto_now_add=True)
+
+    class Meta:
+        ordering = ['date_written',]
+
+    def __unicode__(self):
+        return self.text

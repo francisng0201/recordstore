@@ -111,5 +111,27 @@ def bulk_import_artist():
         for artist in result['artist-list']:
             import_artist(artist)
 
+def bulk_import_labels():
+    albums = models.Album.objects.all()
+    for album in albums:
+        title = album.name
+        mb_id = album.musicbrainz_id
+        print u'{} : {}'.format(title, mb_id).encode('ascii', 'ignore')
+        result = mb.browse_labels(release=mb_id)
+        try:
+            label = result['label-list'][0]  
+            name = label['name']
+            address = label['country']
+            mb_id = label['id']
+
+            if len(models.RecordLabel.objects.filter(musicbrainz_id=mb_id)) == 0:
+                label = models.RecordLabel(label_name=name, label_address=address, musicbrainz_id=mb_id)
+                label.save()
+
+            pressing = models.Pressing(album=album, label=label)
+            pressing.save()
+        except:
+            continue
+
 if __name__ == "__main__":
-    print 'nada'
+    print 'did nothing'
