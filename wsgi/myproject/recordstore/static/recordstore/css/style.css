@@ -6,17 +6,29 @@
     top: 0;
     left: 0;
     right: 0;
-    opacity: 0.9;
     padding: 0 2%;
     position: fixed;
     z-index: 1;
+}
+
+@media(max-width: 750px) {
+    .topbar { 
+        position: relative;
+        height: initial;
+    }
+
+    .topbar a { 
+        display: block;
+        height: initial;
+        width: 100%;
+        text-align: center;
+    }
 }
 
 .topbar a {
     display: inline-block;
     height: 49px;
     line-height: 49px;
-    opacity: 1;
     padding: 0 15px;
     transition: all 0.3s;
 }
@@ -49,7 +61,7 @@
     background-color: white;
     box-sizing: border-box;
     margin: 0 auto;
-    padding: 50px 2.5%;
+    padding: 50px 2.5% 100px;
     width: 70%;
 }
 
@@ -71,6 +83,19 @@ ul.block-list {
     margin: 0;
     transition: all 0.5s;
     width: 20%;
+}
+
+@media(max-width: 700px) {
+    .block-list li {
+        width: 50%;
+    }
+}
+
+@media(max-width: 400px) {
+    .block-list li {
+        width: 100%;
+        border-bottom: 1px solid #ccc;
+    }
 }
 
 .block-list a {

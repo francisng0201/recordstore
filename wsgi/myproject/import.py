@@ -17,6 +17,7 @@ mb.set_useragent('crawler', '0.0.1')
 os.environ['DJANGO_SETTINGS_MODULE'] = 'myproject.settings'
 import django
 django.setup()
+print 'setup django'
 
 import recordstore.models as models
 
@@ -104,6 +105,7 @@ def bulk_import_artist():
         # 'jesu',
         # 'jesus and the mary chain',
         # 'zozobra',
+        # 'cave in',
     ]
     for search in terms:
         print 'searching {}'.format(search)
@@ -134,4 +136,5 @@ def bulk_import_labels():
             continue
 
 if __name__ == "__main__":
-    print 'did nothing'
+    # bulk_import_artist()
+    print 'done'

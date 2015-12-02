@@ -3,9 +3,22 @@
 {% block title %} Create Album - {% endblock %}
 
 {% block body %}
-    <form action='{% url "recordstore:process_album" %}'method="POST">
-        {% csrf_token %}
-        {{ album_form.as_p }}
-        <button class='btn btn-primary' type='submit'>Create</button>
-    </form>
+    <div class="row">
+        <div class="col-xs-12">
+            <div class="panel panel-default">
+                <div class="panel-heading">
+                    <h3 class="panel-title">Create a new album</h3>
+                </div>
+                <div class="panel-body">
+                    <form id='create-album' action='{% url "recordstore:process_album" %}'method="POST">
+                        {% csrf_token %}
+                        {{ album_form.as_p }}
+                    </form>
+                </div>
+                <div class="panel-footer">
+                    <button class="btn btn-primary" type="submit" form="create-album">Create</button>
+                </div>
+            </div>
+        </div>
+    </div>
 {% endblock %}

@@ -7,7 +7,7 @@ from django.utils import timezone
 # Create your models here.
 
 class Genre(models.Model):
-    name = models.CharField(max_length=255, primary_key=True)
+    name = models.CharField(max_length=255, primary_key=True, unique=True)
 
     def __unicode__(self):
         return self.name
@@ -75,7 +75,7 @@ class Pressing(models.Model):
     version_number = models.IntegerField(default=1)
 
     ALLOWED_FORMATS = (
-        ('', 'Unknown'),
+        ('', 'Unknown Format'),
         ('cd', 'CD'),
         ('vinyl_12', 'Vinyl - 12 inch'),
         ('vinyl_2_12', 'Vinyl - Double LP 12 inch'),
