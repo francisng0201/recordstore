@@ -2,27 +2,7 @@
 
 {% block body %}
     <div class='row'>
-        <div class="col-xs-6">
-            <div class="panel panel-default">
-                <div class="panel-heading">
-                    <h3 class='panel-title'>
-                        <a href='{% url "recordstore:all_records" %}'>
-                            All Albums &rarr;
-                        </a>
-                    </h3>
-                </div>
-                <ul class="list-group">
-                    {% for artist in artists %}
-                        <li class='list-group-item'>
-                            <a href='{% url "recordstore:artist_detail" artist.id %}'>
-                                {{ artist }}
-                            </a>
-                        </li>
-                    {% endfor %}
-                </ul>
-            </div>
-        </div>
-        <div class="col-xs-6">
+        <div class="col-xs-12">
             <div class="panel panel-default">
                 <div class="panel-heading">
                     <h3 class='panel-title'>
@@ -31,16 +11,23 @@
                         </a>
                     </h3>
                 </div>
-                <ul class="list-group">
-                    {% for album in albums %}
-                        <li class='list-group-item'>
-                            <a href='{% url "recordstore:album_detail" album.id %}'>
-                                {{ album }}
-                            </a>
-                        </li>
-                    {% endfor %}
-                </ul>
+                <div class="panel-body">
+                    Browse all the artists in the database
+                </div>
             </div>
+        </div>
+    </div>
+
+    <div class="row">
+        <div class='col-xs-12'>
+            <ul class="block-list">
+                {% for artist in artists %}
+                    <li>
+                        <a href='{% url "recordstore:artist_detail" artist.id %}'>
+                            {{ artist }}
+                        </a>
+                {% endfor %}
+            </ul>
         </div>
     </div>
 {% endblock %}

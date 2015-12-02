@@ -15,12 +15,13 @@
                 <ul class='list-group'>
                     <li class='list-group-item'>Artist: 
                         <a href='{% url "recordstore:artist_detail" object.artist.id %}'>
-                            {{ object.artist }}
+                            {{ object.artist }} &rarr;
                         </a>
                     </li>
                     <li class='list-group-item'>Release Date: {{ object.release_date }}</li>
                     <li class='list-group-item'>Number of Songs: {{ object.num_songs }}</li>
                     <li class='list-group-item'>Rating: {{ object.get_rating_display }}</li>
+                    <li class='list-group-item'>Genre: {{ object.genre }}</li>
                 </ul>
             </div>
             

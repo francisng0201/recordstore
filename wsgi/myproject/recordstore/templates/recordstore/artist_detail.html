@@ -1,35 +1,47 @@
 {% extends 'recordstore/includes/base.html' %}
 
 {% block body %}
-    <h4>{{ object }}</h4>
-
-    <div class="panel panel-default">
-        <div class="panel-heading">
-            <h3 class="panel-title">Albums</h3>
+    <div class="row">
+        <div class="col-xs-12">
+            <h4>{{ object }}</h4>
         </div>
-        <ul class='list-group'>
-            {% for album in object.album_set.all %}
-                <li class='list-group-item'>
-                    <a href='{% url "recordstore:album_detail" album.id %}'>
-                        {{ album }} &rarr;
-                    </a>
-                </li>
-            {% empty %}
-                <li class='list-group-item'>No albums</li>
-            {% endfor %}
-        </ul>
     </div>
 
-    <p>
-        Missing an album? Create it 
-        <a href='{% url "recordstore:create_album" %}'>
-            here
-        </a>
-    </p>
-
-    <p>
-        <a href='{% url "recordstore:update_artist" object.id %}'>
-            Update Artist
-        </a>
-    </p>
+    <div class="row">
+        <div class="col-xs-6">
+            <div class="panel panel-default">
+                <div class="panel-heading">
+                    <h3 class="panel-title">Albums</h3>
+                </div>
+                <ul class='list-group'>
+                    {% for album in object.album_set.all %}
+                        <li class='list-group-item'>
+                            <a href='{% url "recordstore:album_detail" album.id %}'>
+                                {{ album }} &rarr;
+                            </a>
+                        </li>
+                    {% empty %}
+                        <li class='list-group-item'>No albums</li>
+                    {% endfor %}
+                </ul>
+            </div>
+        </div>
+        
+        <div class="col-xs-6">
+            <div class="well well-lg">
+                <p>
+                    Missing an album?&nbsp;
+                    <a href='{% url "recordstore:create_album" %}' class='btn btn-default'>
+                       Create It Here
+                    </a>
+                </p>
+                
+                <p>
+                    <a href='{% url "recordstore:update_artist" object.id %}' class='btn btn-default'>
+                        Update Artist
+                    </a>
+                </p>
+            </div>
+        </div>
+    </div>
 {% endblock %}

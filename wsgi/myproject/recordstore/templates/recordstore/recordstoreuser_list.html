@@ -1,0 +1,26 @@
+{% extends 'recordstore/includes/base.html' %}
+
+{% block body %}
+    <div class="row">
+        <div class="col-sm-6">
+            <div class="panel panel-default">
+                <div class="panel-heading">
+                    <h3 class="panel-title">Arists</h3>
+                </div>
+                <ul class='list-group'>
+                    {% for user in object_list %}
+                        <li class='list-group-item'>
+                            <a href='{% url "recordstore:user_detail" user.id %}'>
+                                {{ user }}
+                            </a>
+                        </li>
+                    {% empty %}
+                        <li class='list-group-item'>
+                            We know nothing about anything
+                        </li>
+                    {% endfor %}
+                </ul>
+            </div>
+        </div>
+    </div>
+{% endblock %}

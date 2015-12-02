@@ -31,3 +31,34 @@
     padding: 25px 2.5% 200px;
     width: 70%;
 }
+
+ul.block-list {
+    padding: 0;
+    list-style-type: none;
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+}
+
+.block-list li{
+    list-style-type: none;
+    display: inline-block;
+    height: 100px;
+    margin: 0;
+    padding: 15px;
+    transition: all 0.5s;
+    width: 14.25%;
+}
+
+.block-list li {
+    background-color: #f4f4f4;
+}
+.block-list li:hover {
+    transition-delay: all 0.1s;
+}
+.block-list li:nth-child(odd):hover {
+    background-color: #e8f6fb;
+}
+.block-list li:nth-child(even):hover {
+    background-color: #fefbeb;
+}

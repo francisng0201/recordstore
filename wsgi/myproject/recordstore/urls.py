@@ -44,4 +44,8 @@ urlpatterns = [
     # create and process new record labels
     url(r'^record\+label/create', views.create_record_label, name='create_record_label'),
     url(r'^record\+label/process', views.process_record_label, name='process_record_label'),
+
+    # view users
+    url(r'^users/view', views.UserListView.as_view(), name='all_users'),
+    url(r'^users/(?P<pk>.*)', views.UserDetailView.as_view(), name='user_detail'),
 ]

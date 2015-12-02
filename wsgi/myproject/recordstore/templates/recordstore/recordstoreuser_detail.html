@@ -1,0 +1,42 @@
+{% extends 'recordstore/includes/base.html' %}
+
+{% block header %}
+    {{ object }}
+{% endblock %}
+
+{% block body %}
+    <div class="row">
+        <div class="col-xs-6">
+            <div class="panel panel-default">
+                <div class="panel-heading">
+                    <h3 class="panel-title">User Details</h3>
+                </div>
+                <ul class="list-group">
+                    <li class="list-group-item">
+                        Name: {{ object.django_user.get_full_name }}
+                    </li>
+                    <li class="list-group-item">
+                        Joined: {{ object.django_user.date_joined | timesince }}
+                    </li>
+                </ul>
+            </div>
+        </div>
+
+        <div class="col-xs-6">
+            <div class="panel panel-default">
+                <div class="panel-heading">
+                    <h3 class="panel-title">Records this user owns</h3>
+                </div>
+                <ul class="list-group">
+                    {% for record in object.ownedrecord_set.all %}
+                        <li class="list-group-item">
+                            <a href='{% url "recordstore:pressing_detail" record.id %}'>
+                                {{ record }}
+                            </a>
+                        </li>
+                    {% endfor %}
+                </ul>
+            </div>
+        </div>
+    </div>
+{% endblock %}

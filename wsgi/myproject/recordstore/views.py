@@ -243,3 +243,13 @@ def process_record_label(request):
     record_label_form = RecordLabelForm(request.POST)
     record_label_form.save()
     return redirect(reverse('recordstore:home', args=[]))
+
+#
+# View users
+#
+
+class UserListView(ListView):
+    model = RecordStoreUser
+
+class UserDetailView(DetailView):
+    model = RecordStoreUser
