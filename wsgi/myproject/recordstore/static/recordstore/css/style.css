@@ -2,11 +2,11 @@
     background-color: white;
     border-bottom: 1px solid #ccc;
     box-sizing: border-box;
-    box-shadow: 2px 2px 8px 1px #ddd;
     height: 50px;
     top: 0;
     left: 0;
     right: 0;
+    opacity: 0.9;
     padding: 0 2%;
     position: fixed;
     z-index: 1;
@@ -16,24 +16,46 @@
     display: inline-block;
     height: 49px;
     line-height: 49px;
+    opacity: 1;
     padding: 0 15px;
     transition: all 0.3s;
 }
+
 .topbar a:hover {
     text-decoration: none;
     background-color: #eee;
 }
 
+.footer {
+    border-top: 1px solid #444;
+    padding: 10px 2% 50px;
+}
+
+.footer p {
+    font-size: 12px;
+    line-height: 20px; 
+    margin: 0;
+}
+
+.main-container {
+    border-top: 1px solid #444;
+    border-bottom: 1px solid #444;
+    margin: 0;
+    padding: 0;
+    width: 100%;
+}
+
 .content {
     background-color: white;
     box-sizing: border-box;
-    margin: 50px auto 0;
-    padding: 25px 2.5% 200px;
+    margin: 0 auto;
+    padding: 50px 2.5%;
     width: 70%;
 }
 
 ul.block-list {
     align-items: center;
+    background-color: #f8f8f8;
     border: 1px solid #ddd;
     border-radius: 5px;
     display: flex;
@@ -54,22 +76,21 @@ ul.block-list {
 .block-list a {
     display: block;
     font-size: 15px;
-    color: #666;
+    color: #444;
     height: 150px;
-    padding: 15px;
+    padding: 20px;
     width: 100%;
     transition: all 0.3s;
 }
 
-.block-list li {
-    background-color: #f8f8f8;
-}
 .block-list li:hover {
     transition-delay: all 0.1s;
 }
+
 .block-list li:nth-child(odd):hover {
     background-color: #e8f6fb;
 }
+
 .block-list li:nth-child(even):hover {
     background-color: #fefbeb;
 }
@@ -78,4 +99,34 @@ ul.block-list {
     color: #999;
     text-decoration: none;
     transition-delay: all 0.1s;
+}
+
+/*
+ * Parallax
+ */
+.parallax-container {
+  position: relative;
+  overflow: hidden;
+  height: 400px; 
+}
+
+.parallax {
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  z-index: -1; 
+}
+
+.parallax img {
+    display: none;
+    position: absolute;
+    left: 50%;
+    bottom: 0;
+    min-width: 100%;
+    min-height: 100%;
+    -webkit-transform: translate3d(0, 0, 0);
+    transform: translate3d(0, 0, 0);
+    transform: translateX(-50%); 
 }

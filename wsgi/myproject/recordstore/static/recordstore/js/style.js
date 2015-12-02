@@ -1,6 +1,8 @@
 $(function() {
     $('form').find(':input:not(button,[type="file"])').addClass('form-control');
 
+    $('.parallax').parallax();
+
 
     $('.block-search').on('keyup', function(e) {
         var search = $(this).val().toLowerCase().trim();
