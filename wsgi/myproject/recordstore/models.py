@@ -24,7 +24,8 @@ class Artist(models.Model):
     date_start = models.DateField('Start Date', blank=True, null=True)
     date_end = models.DateField('End Date', null=True, blank=True)
     name = models.CharField(max_length=255)
-    musicbrainz_id = models.IntegerField(default=0, null=True)
+    musicbrainz_id = models.CharField(default='', null=True,
+            max_length=255)
 
     class Meta:
         ordering = ['name',]
@@ -53,6 +54,8 @@ class Album(models.Model):
         (5, '5 Stars'),
     )
     rating = models.IntegerField(default=3, choices=RATING_CHOICES)
+    musicbrainz_id = models.CharField(default='', null=True,
+            max_length=255)
 
     class Meta:
         ordering = ['name']
