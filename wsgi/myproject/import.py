@@ -41,6 +41,11 @@ def import_releases(artist, mb_id):
             mb_id = release['id']
         except:
             mb_id = '0'
+
+        result = models.Album.objects.filter(musicbrainz_id=mb_id)
+        if len(result) > 0:
+            return
+
         album = models.Album(artist=artist, name=title,
                 musicbrainz_id=mb_id)
         album.save()
@@ -52,6 +57,12 @@ def import_artist(artist):
     except:
         country = ''
     mb_id = artist['id']
+
+    result = models.Artist.objects.filter(musicbrainz_id=mb_id)
+    if len(result) > 0:
+        print u'Skipped {} : {}'.format(name, mb_id).encode('ascii', 'ignore')
+        return
+
     django_artist = models.Artist(country=country, name=name,
             musicbrainz_id=mb_id)
     print u'{} : {}'.format(name, mb_id).encode('ascii', 'ignore')
@@ -59,7 +70,7 @@ def import_artist(artist):
     import_releases(django_artist, mb_id)
 
 if __name__ == "__main__":
-    result = mb.search_artists(artist="Converge", type="group",
+    result = mb.search_artists(artist="This Will Destroy You", type="group",
             country="US")
     for artist in result['artist-list']:
         import_artist(artist)
