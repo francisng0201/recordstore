@@ -77,14 +77,9 @@ def update_user(request):
     edit_form = EditUserForm(request.POST, instance=request.user).save()
     return redirect(reverse('recordstore:view_profile', args=[]))
 
-
 #
 # modifying/looking at a personal record collection
 #
-
-@login_required
-def view_collection(request):
-    return redirect(reverse('recordstore:home', args=[]))
 
 @login_required
 def view_profile(request):
@@ -119,7 +114,6 @@ def delete_collection(request):
     record_id = request.POST.get('id', None)
     OwnedRecord.objects.get(pk=record_id).delete()
     return redirect(reverse('recordstore:view_profile', args=[]))
-
 
 #
 # Albums

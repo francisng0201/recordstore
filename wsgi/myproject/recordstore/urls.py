@@ -36,7 +36,6 @@ urlpatterns = [
     url(r'^artists/process', views.process_artist, name='process_artist'),
 
     # modify/view personal user information
-    url(r'^collection/view', views.view_collection, name='view_collection'),
     url(r'^collection/add', views.add_to_collection, name='add_to_collection'),
     url(r'^collection/delete', views.delete_collection, name='delete_collection'),
     url(r'^profile/view', views.view_profile, name='view_profile'),
