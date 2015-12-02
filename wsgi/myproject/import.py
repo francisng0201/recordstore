@@ -69,7 +69,7 @@ def import_artist(artist):
     django_artist.save()
     import_releases(django_artist, mb_id)
 
-if __name__ == "__main__":
+def bulk_import_artist():
     terms = [
         # 'bb king',
         # 'elvis',
@@ -101,12 +101,15 @@ if __name__ == "__main__":
         # 'brand new',
         # 'taking back sunday',
         # 'the cure',
-        'jesu',
-        'jesus and the mary chain',
-        'zozobra',
+        # 'jesu',
+        # 'jesus and the mary chain',
+        # 'zozobra',
     ]
     for search in terms:
         print 'searching {}'.format(search)
         result = mb.search_artists(artist=search, type="group", country="US")
         for artist in result['artist-list']:
             import_artist(artist)
+
+if __name__ == "__main__":
+    print 'nada'
