@@ -5,30 +5,42 @@
         <div class="col-sm-6">
             <div class="panel panel-default">
                 <div class="panel-heading">
-                    <h3 class="panel-title">Arists</h3>
+                    <h3 class="panel-title">Artists</h3>
                 </div>
-                <ul class='list-group'>
-                    {% for artist in object_list %}
-                        <li class='list-group-item'>
-                            <a href='{% url "recordstore:artist_detail" artist.id %}'>
-                                {{ artist }}
-                            </a>
-                        </li>
-                    {% empty %}
-                        <li class='list-group-item'>
-                            We know nothing about anything
-                        </li>
-                    {% endfor %}
-                </ul>
+                <div class='panel-body'>
+                    <p>
+                        Don't see the artist you're looking for here? Try <a href='{% url "recordstore:create_artist" %}'>creating a new one</a>.
+                    </p>
+                </div>
             </div>
         </div>
-        
         <div class="col-sm-6">
-            <div class="well well-lg">
-                <p>
-                    Don't see the artist you're looking for here? Try <a href='{% url "recordstore:create_artist" %}'>creating a new one</a>.
-                </p>
+            <div class="panel panel-default">
+                <div class="panel-heading">
+                    <h3 class="panel-title">search artists</h3>
+                </div>
+                <div class="panel-body">
+                    <input class="form-control block-search" type="text" placeholder='search artists...'>
+                </div>
             </div>
+        </div>
+    </div>
+
+    <div class="row">
+        <div class="col-xs-12">
+            <ul class='block-list'>
+                {% for artist in object_list %}
+                    <li>
+                        <a href='{% url "recordstore:artist_detail" artist.id %}'>
+                            {{ artist }}
+                        </a>
+                    </li>
+                {% empty %}
+                    <li>
+                        We know nothing about anything
+                    </li>
+                {% endfor %}
+            </ul>
         </div>
     </div>
 {% endblock %}

@@ -33,25 +33,34 @@
 }
 
 ul.block-list {
-    padding: 0;
-    list-style-type: none;
+    align-items: center;
     display: flex;
     flex-wrap: wrap;
-    align-items: center;
+    list-style-type: none;
+    padding: 0;
 }
 
 .block-list li{
     list-style-type: none;
     display: inline-block;
-    height: 100px;
+    opacity: 0.9;
     margin: 0;
-    padding: 15px;
     transition: all 0.5s;
     width: 14.25%;
 }
 
+.block-list a {
+    display: block;
+    font-size: 15px;
+    color: #666;
+    height: 125px;
+    padding: 15px;
+    width: 100%;
+    transition: all 0.3s;
+}
+
 .block-list li {
-    background-color: #f4f4f4;
+    background-color: #f8f8f8;
 }
 .block-list li:hover {
     transition-delay: all 0.1s;
@@ -61,4 +70,10 @@ ul.block-list {
 }
 .block-list li:nth-child(even):hover {
     background-color: #fefbeb;
+}
+
+.block-list a:hover {
+    color: #999;
+    text-decoration: none;
+    transition-delay: all 0.1s;
 }

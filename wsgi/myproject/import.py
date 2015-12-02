@@ -70,7 +70,43 @@ def import_artist(artist):
     import_releases(django_artist, mb_id)
 
 if __name__ == "__main__":
-    result = mb.search_artists(artist="This Will Destroy You", type="group",
-            country="US")
-    for artist in result['artist-list']:
-        import_artist(artist)
+    terms = [
+        # 'bb king',
+        # 'elvis',
+        # 'black sabbath',
+        # 'fugazi',
+        # 'minor threat',
+        # 'converge',
+        # '\'68',
+        # 'old man gloom',
+        # 'citizen',
+        # 'blues brothers',
+        # 'cult of luna',
+        # 'our lady',
+        # 'so long forgotten',
+        # 'cash',
+        # 'z',
+        # 'ramones',
+        # 'kesha',
+        # 'nine inch nails',
+        # 'bill nye',
+        # 'my bloody valentine',
+        # 'ride',
+        # 'slabdragger',
+        # 'slowdive',
+        #  'oasis',
+        # 'reo',
+        # 'cloakroom',
+        # 'underoath',
+        # 'brand new',
+        # 'taking back sunday',
+        # 'the cure',
+        'jesu',
+        'jesus and the mary chain',
+        'zozobra',
+    ]
+    for search in terms:
+        print 'searching {}'.format(search)
+        result = mb.search_artists(artist=search, type="group", country="US")
+        for artist in result['artist-list']:
+            import_artist(artist)

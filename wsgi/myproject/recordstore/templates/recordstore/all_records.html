@@ -11,23 +11,39 @@
                 <div class="panel-heading">
                     <h3 class="panel-title">Records</h3>
                 </div>
-                <ul class='list-group'>
-                    {% for record in records %}
-                        <li class='list-group-item'>
-                            <a href='{% url "recordstore:album_detail" record.id %}'>
-                                {{ record }}
-                            </a>
-                        </li>
-                    {% empty %}
-                        <li class='list-group-item'>No records here? Whhhaaaaaaa</li>
-                    {% endfor %}
-                </ul>
             </div>
         </div>
         <div class="col-xs-6">
             <div class="well well-lg">
                 <p>Don't see the album you're looking for? <a href='{% url "recordstore:create_album" %}'>Try creating a new one</a>.</p>
             </div>
+        </div>
+    </div>
+    <div class='row'>
+        <div class="col-xs-12">
+            <div class="panel panel-default">
+                <div class="panel-heading">
+                    <h3 class="panel-title">Search Albums</h3>
+                </div>
+                <div class="panel-body">
+                    <input type="text" class='form-control block-search' placeholder='search albums...'>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class='row'>
+        <div class="col-xs-12">
+            <ul class='block-list'>
+                {% for record in records %}
+                    <li>
+                        <a href='{% url "recordstore:album_detail" record.id %}'>
+                            {{ record }}
+                        </a>
+                    </li>
+                {% empty %}
+                    <li class='list-group-item'>No records here? Whhhaaaaaaa</li>
+                {% endfor %}
+            </ul>
         </div>
     </div>
 {% endblock %}
