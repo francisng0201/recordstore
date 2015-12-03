@@ -99,6 +99,10 @@ class RecordStoreUser(models.Model):
     def __unicode__(self):
         return '{}'.format(self.django_user)
 
+    def owns_record(self, album, pressing):
+        objs = self.ownedrecord_set.filter(album=album, pressing=pressing)
+        return len(objs) > 0
+
 class OwnedRecord(models.Model):
     owner = models.ForeignKey(RecordStoreUser)
     
@@ -107,6 +111,7 @@ class OwnedRecord(models.Model):
 
     class Meta:
         unique_together = ('album', 'pressing',)
+        ordering = ['album',]
 
     def __unicode__(self):
         if self.pressing == None:

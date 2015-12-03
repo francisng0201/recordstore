@@ -106,6 +106,10 @@ def bulk_import_artist():
         # 'jesus and the mary chain',
         # 'zozobra',
         # 'cave in',
+        # 'led zeppelin',
+        'pity sex',
+        'looming', 
+        'our lady',
     ]
     for search in terms:
         print 'searching {}'.format(search)
@@ -136,5 +140,5 @@ def bulk_import_labels():
             continue
 
 if __name__ == "__main__":
-    # bulk_import_artist()
+    bulk_import_artist()
     print 'done'
