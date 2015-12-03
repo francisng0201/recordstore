@@ -110,7 +110,7 @@ class OwnedRecord(models.Model):
     pressing = models.ForeignKey(Pressing, blank=True, null=True)
 
     class Meta:
-        unique_together = ('album', 'pressing',)
+        unique_together = ('owner', 'album', 'pressing',)
         ordering = ['album',]
 
     def __unicode__(self):

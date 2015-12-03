@@ -110,7 +110,7 @@ def add_to_collection(request):
         form = OwnedRecordForm(record)
         form.save()
     except:
-        return redirect(reverse('recordstore:album_detail', args=[album_id,]))
+        return redirect(reverse('recordstore:pressing_detail', args=[pressing_id,]))
     else:
         return redirect(reverse('recordstore:view_profile', args=[]))
 

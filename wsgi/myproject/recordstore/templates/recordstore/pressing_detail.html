@@ -1,34 +1,55 @@
 {% extends 'recordstore/includes/base.html' %}
 
 {% block body %}
-    <div class="panel panel-default">
-        <div class="panel-heading">
-            <h3 class='panel-title'>
-                <a href='{% url "recordstore:album_detail" object.album.id %}'>
-                    &larr; {{ object.album }}
-                </a>
-            </h3>
+    <div class='row'>
+        <div class='col-xs-12'>
+            <div class="panel panel-default">
+                <div class="panel-heading">
+                    <h3 class='panel-title'>
+                        <a href='{% url "recordstore:album_detail" object.album.id %}'>
+                            &larr; {{ object.album }}
+                        </a>
+                    </h3>
+                </div>
+                <ul class='list-group'>
+                    <li class='list-group-item'>
+                        Label: {{ object.label }}
+                    </li>
+                    <li class='list-group-item'>
+                        Pressing Number: {{ object.version_number }}
+                    </li>
+                    <li class='list-group-item'>
+                        Format: {{ object.get_release_format_display }}
+                    </li>
+                    <li class='list-group-item'>
+                        <form action='{% url "recordstore:add_to_collection" %}' method='POST'>
+                            {% csrf_token %}
+                            <input type='hidden' name='album_id' value='{{ object.album.id }}' />
+                            <input type='hidden' name='pressing_id' value='{{ object.id }}' />
+                            <button class='btn btn-primary' type='submit'>
+                                Add To Your Collection
+                            </button>
+                        </form>
+                    </li>
+                </ul>
+            </div>
         </div>
-        <ul class='list-group'>
-            <li class='list-group-item'>
-                Label: {{ object.label }}
-            </li>
-            <li class='list-group-item'>
-                Pressing Number: {{ object.version_number }}
-            </li>
-            <li class='list-group-item'>
-                Format: {{ object.get_release_format_display }}
-            </li>
-            <li class='list-group-item'>
-                <form action='{% url "recordstore:add_to_collection" %}' method='POST'>
-                    {% csrf_token %}
-                    <input type='hidden' name='album_id' value='{{ object.album.id }}' />
-                    <input type='hidden' name='pressing_id' value='{{ object.id }}' />
-                    <button class='btn btn-primary' type='submit'>
-                        Add To Your Collection
-                    </button>
-                </form>
-            </li>
-        </ul>
+    </div>
+    <div class='row'>
+        <div class='col-xs-12'> <h4>Users who own this record</h4>
+            <ul class='list-group'>
+                {% for record in pressing.ownedrecord_set.all %}
+                    <li class='list-group-item'>
+                        <a href='{% url "recordstore:user_detail" record.owner.id %}'>
+                            {{ record.owner }}
+                        </a>
+                    </li>
+                {% empty %}
+                    <li class='list-group-item'>
+                        No one owns this record
+                    </li>
+                {% endfor %}
+            </ul>
+        </div>
     </div>
 {% endblock %}
