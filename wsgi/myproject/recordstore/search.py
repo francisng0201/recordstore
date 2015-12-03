@@ -60,8 +60,8 @@ def search_objects(search_string, class_name, start, stop, ic):
     results = results[start:stop]
     return [ x[0] for x in results ]
 
-def search_albums(search_string, start=0, stop=100, ic=False):
+def search_albums(search_string, start=0, stop=100, ic=True):
     return search_objects(search_string, Album, start, stop, ic)
 
-def search_artists(search_string, start=0, stop=100, ic=False):
+def search_artists(search_string, start=0, stop=100, ic=True):
     return search_objects(search_string, Artist, start, stop, ic)
