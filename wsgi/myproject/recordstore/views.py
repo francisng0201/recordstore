@@ -106,10 +106,13 @@ def add_to_collection(request):
         'album' : album_id,
         'pressing' : pressing_id,
     }
-    form = OwnedRecordForm(record)
-    form.save()
-
-    return redirect(reverse('recordstore:view_profile', args=[]))
+    try:
+        form = OwnedRecordForm(record)
+        form.save()
+    except:
+        return redirect(reverse('recordstore:album_detail', args=[album_id,]))
+    else:
+        return redirect(reverse('recordstore:view_profile', args=[]))
 
 @login_required
 def delete_collection(request):
@@ -284,6 +287,7 @@ class SearchView(View):
     def post(self, request):
         search_string = request.POST['search']
         context = {
+            'search_string': search_string,
             'artists': search_artists(search_string),
             'albums': search_albums(search_string),
         }
