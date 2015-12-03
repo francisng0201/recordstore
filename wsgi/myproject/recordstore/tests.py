@@ -4,8 +4,10 @@ import json
 
 from .models import *
 from .views import *
+from .search import *
 
 class CollectionTest(TestCase):
+    """
     fixtures = ['test_data.json',] 
 
     def setUp(self):
@@ -29,3 +31,21 @@ class CollectionTest(TestCase):
         response_json = decoder.decode(response.content)
 
         self.assertTrue(response_json['success'])
+    """
+    pass
+
+class SearchTest(TestCase):
+
+    def test_Levenshtein(self):
+        self.assertEqual(LevenshteinDistance('', ''), 0)
+        self.assertEqual(LevenshteinDistance('equal', 'equal'), 0)
+        self.assertEqual(LevenshteinDistance('equal', 'aaaba'), 5)
+        self.assertEqual(LevenshteinDistance('equal', 'equala'), 1)
+        self.assertEqual(LevenshteinDistance('equala', 'equal'), 1)
+        self.assertEqual(LevenshteinDistance('', 'equal'), 5)
+
+    def test_search_artist(self):
+        results = search_artists('isis') 
+        print results
+        self.assertEqual(len(results), 25)
+

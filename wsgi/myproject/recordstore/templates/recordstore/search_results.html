@@ -1,0 +1,58 @@
+{% extends 'recordstore/includes/base.html' %}
+
+{% block body %}
+    <div class='row'>
+        <div class='col-xs-12'>
+            <div class='panel panel-default'>
+                <div class='panel-heading'>
+                    <h3 class='panel-title'>Search</h3>
+                </div>
+                <div class='panel-body'>
+                    <form method='POST'>
+                        {% csrf_token %}
+                        <p>
+                            <input type='text' name='search' class='form-control' placeholder='search'/>
+                        </p>
+                        <p>
+                            <button type='submit' class='btn btn-default'>Search</button>
+                        </p>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class='row'>
+        <div class='col-sm-6'>
+            <div class='panel panel-default'>
+                <div class='panel-heading'>
+                    Artists
+                </div>
+                <ul class='list-group'>
+                    {% for artist in artists %}
+                        <li class='list-group-item'>
+                            <a href='{% url "recordstore:artist_detail" artist.id %}'>
+                                {{ artist }}
+                            </a>
+                        </li>
+                    {% endfor %}
+                </ul>
+            </div>
+        </div>
+        <div class='col-sm-6'>
+            <div class='panel panel-default'>
+                <div class='panel-heading'>
+                    Albums
+                </div>
+                <ul class='list-group'>
+                    {% for album in albums %}
+                        <li class='list-group-item'>
+                            <a href='{% url "recordstore:album_detail" album.id %}'>
+                                {{ album }}
+                            </a>
+                        </li>
+                    {% endfor %}
+                </ul>
+            </div>
+        </div>
+    </div>
+{% endblock %}

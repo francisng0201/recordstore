@@ -48,4 +48,7 @@ urlpatterns = [
     # view users
     url(r'^users/view', views.UserListView.as_view(), name='all_users'),
     url(r'^users/(?P<pk>.*)', views.UserDetailView.as_view(), name='user_detail'),
+
+    # search
+    url(r'^search', views.SearchView.as_view(), name='search')
 ]

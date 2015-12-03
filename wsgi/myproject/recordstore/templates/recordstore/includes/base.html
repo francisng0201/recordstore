@@ -26,6 +26,8 @@
         <a href='{% url "recordstore:home" %}'>home</a>
         <a href='{% url "recordstore:all_artists" %}'>artists</a>
         <a href='{% url "recordstore:all_records" %}'>albums</a>
+        <a href='{% url "recordstore:all_users" %}'>users</a>
+        <a href='{% url "recordstore:search" %}'>search</a>
         {% if not user.is_authenticated %}
             <a href='{% url "recordstore:login" %}'>login</a>
         {% else %}
