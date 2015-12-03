@@ -44,6 +44,25 @@
                     {% endfor %}
                 </ul>
             </div>
+
+            <div class='panel panel-default'>
+                <div class="panel-heading">
+                    <h3 class="panel-title">Recommended for you</h3>
+                </div>
+                <ul class="list-group">
+                    {% for pressing in recommendations %}
+                        <li class="list-group-item">
+                            <a href='{% url "recordstore:pressing_detail" pressing.id %}'>
+                                {{ pressing }}
+                            </a>
+                        </li>
+                    {% empty %}
+                        <li class="list-group-item">
+                            You have no recommendations...
+                        </li>
+                    {% endfor %}
+                </ul>
+            </div>
         </div>
 
         <div class="col-xs-6">
@@ -80,27 +99,6 @@
                     </a>
                 </div>
             </div>
-
-
-
-            <div class='panel panel-default'>
-                <div class="panel-heading">
-                    <h3 class="panel-title">Recommended for you</h3>
-                </div>
-                <ul class="list-group">
-                    {% for friend in rc_user.friends %}
-                        <li class="list-group-item">
-                            {{ friend }}
-                        </li>
-                    {% empty %}
-                        <li class="list-group-item">
-                            You have no recommendations...
-                        </li>
-                    {% endfor %}
-                </ul>
-            </div>
-
-
         </div>
     </div>
 {% endblock %}

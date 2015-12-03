@@ -13,6 +13,7 @@ from django.views.generic.list import ListView
 from .models import *
 from .forms import *
 from .search import *
+from .recommendations import * 
 
 def home(request):
     context = {
@@ -89,6 +90,7 @@ def view_profile(request):
     context = {
         'rc_user' : recordstore_user,
         'records' : recordstore_user.ownedrecord_set.all(),
+        'recommendations' : Recommendations(recordstore_user).get_recommendations()
     }
     return render(request, 'recordstore/view_profile.html', context)
 
